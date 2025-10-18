@@ -36,25 +36,16 @@
     z-index: 1000;
   }
 
-  /* لوگوی سایت بدون گردی و در وسط هدر */
   header .logo {
     width: 140px;
     height: auto;
     object-fit: cover;
-    border-radius: 0;
   }
 
-  /* آیکون‌ها (پروفایل و منو) */
   header .material-icons {
     font-size: 32px;
-    color: #66b2ff; /* آبی کم‌رنگ */
+    color: #66b2ff;
     cursor: pointer;
-    outline: none;
-  }
-
-  header .material-icons:focus,
-  header .material-icons:active {
-    outline: none;
   }
 
   /* ==== Footer Nav ==== */
@@ -65,41 +56,46 @@
     right: 0;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    padding: 12px 0;
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05); /* شیشه‌ای */
-    border-top: 1px solid rgba(255,255,255,0.1);
+    align-items: flex-end;
+    padding: 8px 0 12px;
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.15);
+    border-top: 1px solid rgba(102,178,255,0.3);
     z-index: 1000;
   }
 
   .bottom-nav .item {
     text-align: center;
-    color: #66b2ff; /* آبی کم‌رنگ */
-    font-size: 24px;
-    user-select: none;
-    outline: none;
+    color: #66b2ff;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    max-width: 70px;
   }
 
-  .bottom-nav .item:focus,
-  .bottom-nav .item:active {
-    outline: none;
+  .bottom-nav .item .label {
+    font-size: 12px;
+    margin-top: 3px;
+    color: #66b2ff;
+    white-space: nowrap;
   }
 
   .bottom-nav .center {
     position: relative;
-    top: -20px;
-    background: rgba(102,178,255,0.2); /* شیشه‌ای آبی کم‌رنگ */
-    color: #66b2ff;
+    top: -25px;
+    width: 80px;
+    height: 80px;
+    background: #66b2ff;
     border-radius: 50%;
-    padding: 16px;
-    font-size: 28px;
-    outline: none;
-  }
-
-  .bottom-nav .center:focus,
-  .bottom-nav .center:active {
-    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 25px rgba(102,178,255,0.5);
+    font-size: 32px;
+    color: #fff;
+    flex: 0 0 auto;
   }
 
   /* فاصله محتوا */
@@ -118,12 +114,28 @@
     border-radius: 10px;
   }
 
-  /* Flex برای هدر: پروفایل و لوگو وسط */
   .header-left,
   .header-right {
     display: flex;
     align-items: center;
     gap: 15px;
+  }
+
+  /* واکنش‌گرایی برای موبایل */
+  @media (max-width: 480px) {
+    .bottom-nav .item {
+      font-size: 20px;
+      max-width: 60px;
+    }
+    .bottom-nav .item .label {
+      font-size: 11px;
+    }
+    .bottom-nav .center {
+      width: 70px;
+      height: 70px;
+      font-size: 28px;
+      top: -20px;
+    }
   }
 </style>
 </head>
@@ -149,11 +161,25 @@
 </main>
 
 <div class="bottom-nav">
-  <div class="item" tabindex="0"><span class="material-icons">chat_bubble_outline</span></div>
-  <div class="item" tabindex="0"><span class="material-icons">smartphone</span></div>
-  <div class="item center" tabindex="0"><span class="material-icons">shopping_bag</span></div>
-  <div class="item" tabindex="0"><span class="material-icons">account_circle</span></div>
-  <div class="item" tabindex="0"><span class="material-icons">home</span></div>
+  <div class="item" tabindex="0">
+    <span class="material-icons">home</span>
+    <div class="label">خانه</div>
+  </div>
+  <div class="item" tabindex="0">
+    <span class="material-icons">account_circle</span>
+    <div class="label">پروفایل</div>
+  </div>
+  <div class="item center" tabindex="0">
+    <span class="material-icons">shopping_bag</span>
+  </div>
+  <div class="item" tabindex="0">
+    <span class="material-icons">smartphone</span>
+    <div class="label">اپ</div>
+  </div>
+  <div class="item" tabindex="0">
+    <span class="material-icons">chat_bubble_outline</span>
+    <div class="label">پشتیبانی</div>
+  </div>
 </div>
 
 </body>
