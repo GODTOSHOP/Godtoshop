@@ -15,8 +15,8 @@
   body {
     margin: 0;
     font-family: "IRANSansWeb", sans-serif;
-    background: #f5f5f5;
-    color: #333;
+    background: #121212; /* رنگ پس‌زمینه تاریک */
+    color: #f5f5f5;      /* متن سفید */
   }
 
   /* ==== Header ==== */
@@ -25,28 +25,28 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    backdrop-filter: blur(15px);
-    background: rgba(255, 255, 255, 0.2);
-    border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 0 20px;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05); /* شیشه‌ای */
+    border-bottom: 1px solid rgba(255,255,255,0.1);
     z-index: 1000;
   }
 
+  /* لوگوی سایت بدون گردی و بالای صفحه */
   header img.logo {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 120px;
+    height: auto;
     object-fit: cover;
-    border: 2px solid #007bff;
+    border-radius: 0;
   }
 
   header .material-icons {
     font-size: 28px;
-    color: #007bff;
+    color: #66b2ff; /* آبی کم‌رنگ */
     cursor: pointer;
     outline: none;
   }
@@ -65,16 +65,16 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    backdrop-filter: blur(20px);
-    background: rgba(255,255,255,0.2);
-    border-top: 1px solid rgba(0,0,0,0.1);
     padding: 12px 0;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.05); /* شیشه‌ای */
+    border-top: 1px solid rgba(255,255,255,0.1);
     z-index: 1000;
   }
 
   .bottom-nav .item {
     text-align: center;
-    color: #007bff;
+    color: #66b2ff; /* آبی کم‌رنگ */
     font-size: 24px;
     user-select: none;
     outline: none;
@@ -85,12 +85,11 @@
     outline: none;
   }
 
-  /* دکمه وسط (سبد خرید) */
   .bottom-nav .center {
     position: relative;
     top: -20px;
-    background: linear-gradient(145deg, #00a2ff, #007bff);
-    color: #fff;
+    background: rgba(102,178,255,0.2); /* شیشه‌ای آبی کم‌رنگ */
+    color: #66b2ff;
     border-radius: 50%;
     padding: 16px;
     font-size: 28px;
@@ -104,8 +103,18 @@
 
   /* فاصله محتوا */
   main {
-    padding-top: 80px;
+    padding-top: 100px;
     padding-bottom: 120px;
+  }
+
+  /* مثال پنل شیشه‌ای داخل صفحه */
+  .glass-panel {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
   }
 </style>
 </head>
@@ -117,7 +126,12 @@
   <span class="material-icons" tabindex="0">menu</span>
 </header>
 
-<main></main>
+<main>
+  <div class="glass-panel">
+    <h2>بخش شیشه‌ای نمونه</h2>
+    <p>می‌توانید محتوای خود را در این پنل‌های شیشه‌ای قرار دهید.</p>
+  </div>
+</main>
 
 <div class="bottom-nav">
   <div class="item" tabindex="0"><span class="material-icons">chat_bubble_outline</span></div>
