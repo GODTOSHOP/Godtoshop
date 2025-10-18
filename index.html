@@ -31,23 +31,36 @@
     align-items: center;
     backdrop-filter: blur(15px);
     background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     padding: 0 20px;
     z-index: 1000;
   }
 
   header img.logo {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #007bff;
+    border: 3px solid #007bff;
+    box-shadow: 0 0 15px rgba(0,123,255,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  header img.logo:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(0,123,255,0.8);
   }
 
   header .material-icons {
     font-size: 28px;
     color: #007bff;
     cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+
+  header .material-icons:hover {
+    transform: scale(1.2);
+    color: #0056b3;
   }
 
   /* ==== Footer Nav ==== */
@@ -60,9 +73,9 @@
     justify-content: space-around;
     align-items: center;
     backdrop-filter: blur(20px);
-    background: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.75);
     border-top: 1px solid rgba(0,0,0,0.05);
-    padding: 10px 0;
+    padding: 12px 0;
     z-index: 1000;
   }
 
@@ -70,24 +83,37 @@
     text-align: center;
     color: #007bff;
     font-size: 24px;
+    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .bottom-nav .item:hover {
+    transform: translateY(-5px) scale(1.15);
+    color: #0056b3;
+    text-shadow: 0 0 8px rgba(0,123,255,0.7);
   }
 
   /* دکمه وسط (سبد خرید) */
   .bottom-nav .center {
     position: relative;
-    top: -18px;
+    top: -20px;
     background: linear-gradient(145deg, #00a2ff, #007bff);
     color: #fff;
     border-radius: 50%;
-    padding: 14px;
-    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
-    font-size: 26px;
+    padding: 16px;
+    box-shadow: 0 6px 20px rgba(0,123,255,0.5);
+    font-size: 28px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .bottom-nav .center:hover {
+    transform: scale(1.2) rotate(5deg);
+    box-shadow: 0 10px 25px rgba(0,123,255,0.7);
   }
 
   /* برای فاصله صفحه */
   main {
     padding-top: 80px;
-    padding-bottom: 100px;
+    padding-bottom: 120px;
   }
 </style>
 </head>
