@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>گادتوشاپ — فروشگاه مطمئن و سریع</title>
+<meta name="description" content="گادتوشاپ، فروشگاه مطمئن برای خرید سریع و ایمن محصولات دیجیتال و بازی.">
+<meta name="keywords" content="گادتوشاپ, خرید بازی, گیفت کارت, اپلیکیشن اندروید, فروشگاه آنلاین">
+<meta name="theme-color" content="#05030c">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="https://cdn.imgurl.ir/uploads/b5464_1000107720.png" type="image/png">
+
+<style>
+:root{
+  --bg-dark:#05030c;
+  --bg-dark2:#1b1630;
+  --bg-light:#f9f9f9;
+  --card-dark:rgba(255,255,255,0.07);
+  --card-light:rgba(255,255,255,0.1);
+  --text-dark:#fff;
+  --text-light:#05030c;
+  --accent1:#7ef3ff;
+  --accent2:#8a6bff;
+  --muted-dark:#cfd8e3;
+  --muted-light:#666;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Vazirmatn',Tahoma,sans-serif;
+  background:linear-gradient(135deg,var(--bg-dark),var(--bg-dark2));
+  color:var(--text-dark);
+  direction:rtl;
+  scroll-behavior:smooth;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition: all 0.3s ease;
+}
+
+/* Header */
+header{
+  position:fixed;top:0;left:0;width:100%;
+  z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;
+  background:rgba(10,8,20,0.25);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  transition:all .3s ease;
+}
+header.scrolled{
+  background:rgba(10,8,20,0.9);
+  border-color:rgba(126,243,255,0.2);
+  box-shadow:0 0 20px rgba(126,243,255,0.15);
+}
+
+/* Brand */
+.brand{display:flex;align-items:center;gap:12px;}
+.brand img{width:55px;height:55px;border-radius:12px;box-shadow:0 0 20px rgba(126,243,255,0.25);}
+.brand-text{display:flex;flex-direction:column;line-height:1.3;}
+.brand-text h1{font-size:1.2rem;font-weight:700;}
+.brand-text span{font-size:0.85rem;color:var(--muted-dark);}
+
+/* Nav */
+nav{display:flex;gap:16px;}
+nav a{color:var(--muted-dark);text-decoration:none;padding:8px 14px;border-radius:10px;transition:.2s;}
+nav a:hover{background:rgba(255,255,255,0.05);color:#fff;}
+
+/* Hamburger */
+.menu-toggle{width:34px;height:24px;cursor:pointer;display:none;flex-direction:column;justify-content:space-between;}
+.bar{height:4px;background:#fff;border-radius:2px;transition:all .3s;}
+
+/* Overlay */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:all .3s ease;z-index:998;}
+.overlay.active{opacity:1;visibility:visible;}
+
+/* Mobile Nav */
+.mobile-nav{position:fixed;top:80px;left:-70%;width:70%;height:calc(100vh - 80px);background:rgba(15,10,30,0.92);backdrop-filter:blur(14px);box-shadow:4px 0 20px rgba(126,243,255,0.15);transition:left .35s ease;padding:60px 24px;display:flex;flex-direction:column;gap:22px;z-index:999;}
+.mobile-nav.open{left:0;}
+.mobile-nav a{color:#fff;text-decoration:none;font-size:1rem;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:8px;transition:.2s;}
+.mobile-nav a:hover{color:var(--accent1);}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:140px 28px 60px;}
+.hero-left{text-align:center;}
+.hero-left h2{font-size:2rem;margin-bottom:12px;text-shadow:0 0 12px rgba(126,243,255,0.4);}
+.hero-left p{font-size:1.15rem;color:#cfeef8;margin-bottom:22px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+.cta,.myket,.btn-ghost{padding:12px 22px;border-radius:12px;font-weight:700;text-decoration:none;transition:all .25s ease;}
+.cta,.myket{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#061224;box-shadow:0 6px 30px rgba(122,96,255,0.18);}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.1);color:var(--muted-dark);}
+.cta:hover,.myket:hover{transform:translateY(-2px);}
+.btn-ghost:hover{background:rgba(255,255,255,0.05);color:#fff;}
+.hero-right img{width:100%;border-radius:20px;box-shadow:0 0 40px rgba(126,243,255,0.1);}
+
+/* Glass Sections */
+.glass-section{width:95%;max-width:1000px;margin:40px auto;background:rgba(255,255,255,0.08);backdrop-filter:blur(16px);border-radius:20px;padding:40px 30px;display:flex;flex-direction:column;gap:24px;align-items:center;text-align:center;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:all 0.3s ease;}
+.glass-section h2{font-size:1.8rem;}
+.quick-links{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:10px;}
+.quick-links a{text-decoration:none;padding:10px 18px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#061224;font-weight:700;transition:all .25s;}
+.quick-links a:hover{transform:translateY(-2px);}
+
+/* Footer */
+footer{text-align:center;padding:30px 0;font-size:.9rem;color:var(--muted-dark);border-top:1px solid rgba(255,255,255,0.05);margin-top:60px;}
+
+/* Theme Toggle */
+#themeToggle{position:fixed;top:18px;right:18px;z-index:1100;padding:8px 12px;border:none;border-radius:8px;background:var(--accent1);color:#061224;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:all .25s;}
+#themeToggle:hover{transform:translateY(-2px);}
+
+/* Responsive */
+@media(max-width:768px){
+  nav{display:none;}
+  .menu-toggle{display:flex;}
+  .hero{grid-template-columns:1fr;text-align:center;}
+  .hero-right{display:none;}
+}
+@media(min-width:769px){.menu-toggle{display:none;}}
+</style>
+</head>
+<body>
+
+<div class="overlay" id="overlay"></div>
+<button id="themeToggle">🌙</button>
+
+<header id="mainHeader">
+  <div class="brand">
+    <img src="https://cdn.imgurl.ir/uploads/b5464_1000107720.png" alt="لوگو گادتوشاپ">
+    <div class="brand-text">
+      <h1>گادتوشاپ</h1>
+      <span>فروشگاه دیجیتال و خدمات بازی</span>
+    </div>
+  </div>
+  <nav>
+    <a href="#hero">صفحه اصلی</a>
+    <a href="#products">محصولات</a>
+    <a href="#trust">اعتماد و مجوزها</a>
+  </nav>
+  <div class="menu-toggle" id="menuToggle" aria-label="فهرست">
+    <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <a href="#hero">صفحه اصلی</a>
+  <a href="#products">محصولات</a>
+  <a href="#trust">اعتماد و مجوزها</a>
+</div>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <h2>فروشگاه گادتوشاپ مطمئن و سریع</h2>
+    <p>خرید بدون ریسک و ایمن با قیمت‌های ارزان</p>
+    <div class="hero-actions">
+      <a href="https://cafebazaar.ir/app/GODTOSHOP.COM" class="cta">دانلود از بازار</a>
+      <a href="https://myket.ir/app/GODTOSHOP.COM" class="myket">دانلود از مایکت</a>
+      <a href="#" class="btn-ghost">دانلود مستقیم</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://cdn.imgurl.ir/uploads/heroimage.png" alt="فروشگاه آنلاین">
+  </div>
+</section>
+
+<!-- Products Section -->
+<section class="glass-section" id="products">
+  <h2>محصولات</h2>
+  <p>محصولات بازی‌های محبوب مثل فری فایر و ماین کرافت در دسترس شما هستند.</p>
+</section>
+
+<!-- اعتماد و مجوزها -->
+<section class="glass-section" id="trust">
+  <h2>اعتماد و مجوزها</h2>
+  <div class="trust-logos">
+    <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" aria-label="ای‌نماد">
+      <img src="https://trustseal.enamad.ir/logo.aspx?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="ای‌نماد">
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 گادتوشاپ — تمامی حقوق محفوظ است.</p>
+</footer>
+
+<!-- Chatina -->
+<script>
+window.addEventListener("load",function(){
+  var t="684005f9e231639ad8d7549e";
+  window.chatina={bId:t};
+  var e=document.createElement("div");e.id="chatina-root";document.body.appendChild(e);
+  var n=document.createElement("link");n.rel="stylesheet";n.href="https://cdn.chatina.ai/static/widget.css";n.crossOrigin="anonymous";document.head.appendChild(n);
+  var a=document.createElement("script");a.src="https://cdn.chatina.ai/static/widget.js";a.crossOrigin="anonymous";document.head.appendChild(a);
+});
+</script>
+
+<!-- JS Header, Menu, Theme Toggle -->
+<script>
+const header=document.getElementById('mainHeader');
+const menuToggle=document.getElementById('menuToggle');
+const mobileNav=document.getElementById('mobileNav');
+const overlay=document.getElementById('overlay');
+const themeToggle=document.getElementById('themeToggle');
+
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>50);});
+
+menuToggle.addEventListener('click',()=>{
+  mobileNav.classList.toggle('open');
+  overlay.classList.toggle('active');
+  mobileNav.setAttribute('aria-hidden',mobileNav.classList.contains('open')?'false':'true');
+});
+overlay.addEventListener('click',()=>{
+  mobileNav.classList.remove('open');
+  overlay.classList.remove('active');
+  mobileNav.setAttribute('aria-hidden','true');
+});
+document.querySelectorAll('nav a, .mobile-nav a').forEach(link=>{
+  link.addEventListener('click',()=>{
+    mobileNav.classList.remove('open');
+    overlay.classList.remove('active');
+    mobileNav.setAttribute('aria-hidden','true');
+  });
+});
+
+// حالت شب/روز
+themeToggle.addEventListener('click',()=>{
+  if(document.body.style.background.includes('--bg-light') || document.body.dataset.theme==='light'){
+    document.body.style.background='linear-gradient(135deg,var(--bg-dark),var(--bg-dark2))';
+    document.body.style.color=var(--text-dark);
+    document.body.dataset.theme='dark';
+    themeToggle.textContent='🌙';
+  } else {
+    document.body.style.background='linear-gradient(135deg,var(--bg-light),#e0e0e0)';
+    document.body.style.color=var(--text-light);
+    document.body.dataset.theme='light';
+    themeToggle.textContent='☀️';
+  }
+});
+</script>
+
+</body>
+</html>
