@@ -15,7 +15,7 @@
   body {
     margin: 0;
     font-family: "IRANSansWeb", sans-serif;
-    background: #fff;
+    background: #f5f5f5;
     color: #333;
   }
 
@@ -30,41 +30,25 @@
     justify-content: space-between;
     align-items: center;
     backdrop-filter: blur(15px);
-    background: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    background: rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     padding: 0 20px;
     z-index: 1000;
   }
 
   header img.logo {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
-    /* رنگ لوگو را می‌توانید با filter تغییر دهید */
-    filter: brightness(0) saturate(100%) invert(28%) sepia(92%) saturate(4350%) hue-rotate(198deg) brightness(95%) contrast(92%);
-    /* اگر میخوای آبی باشه، همین فیلتر رو نگه دار، برای مشکی میتونی filter: none یا brightness(0) invert(0) */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 2px solid #007bff;
-    box-shadow: 0 0 15px rgba(0,123,255,0.5);
-  }
-
-  header img.logo:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 25px rgba(0,123,255,0.8);
   }
 
   header .material-icons {
     font-size: 28px;
     color: #007bff;
     cursor: pointer;
-    transition: transform 0.2s ease, color 0.2s ease;
     outline: none;
-  }
-
-  header .material-icons:hover {
-    transform: scale(1.2);
-    color: #0056b3;
   }
 
   header .material-icons:focus,
@@ -82,8 +66,8 @@
     justify-content: space-around;
     align-items: center;
     backdrop-filter: blur(20px);
-    background: rgba(255,255,255,0.75);
-    border-top: 1px solid rgba(0,0,0,0.05);
+    background: rgba(255,255,255,0.2);
+    border-top: 1px solid rgba(0,0,0,0.1);
     padding: 12px 0;
     z-index: 1000;
   }
@@ -92,15 +76,8 @@
     text-align: center;
     color: #007bff;
     font-size: 24px;
-    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
-    outline: none;
     user-select: none;
-  }
-
-  .bottom-nav .item:hover {
-    transform: translateY(-5px) scale(1.15);
-    color: #0056b3;
-    text-shadow: 0 0 8px rgba(0,123,255,0.7);
+    outline: none;
   }
 
   .bottom-nav .item:focus,
@@ -116,15 +93,8 @@
     color: #fff;
     border-radius: 50%;
     padding: 16px;
-    box-shadow: 0 6px 20px rgba(0,123,255,0.5);
     font-size: 28px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     outline: none;
-  }
-
-  .bottom-nav .center:hover {
-    transform: scale(1.2) rotate(5deg);
-    box-shadow: 0 10px 25px rgba(0,123,255,0.7);
   }
 
   .bottom-nav .center:focus,
@@ -132,7 +102,7 @@
     outline: none;
   }
 
-  /* برای فاصله صفحه */
+  /* فاصله محتوا */
   main {
     padding-top: 80px;
     padding-bottom: 120px;
