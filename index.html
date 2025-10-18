@@ -41,9 +41,12 @@
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #007bff;
-    box-shadow: 0 0 15px rgba(0,123,255,0.5);
+    /* رنگ لوگو را می‌توانید با filter تغییر دهید */
+    filter: brightness(0) saturate(100%) invert(28%) sepia(92%) saturate(4350%) hue-rotate(198deg) brightness(95%) contrast(92%);
+    /* اگر میخوای آبی باشه، همین فیلتر رو نگه دار، برای مشکی میتونی filter: none یا brightness(0) invert(0) */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #007bff;
+    box-shadow: 0 0 15px rgba(0,123,255,0.5);
   }
 
   header img.logo:hover {
@@ -56,11 +59,17 @@
     color: #007bff;
     cursor: pointer;
     transition: transform 0.2s ease, color 0.2s ease;
+    outline: none;
   }
 
   header .material-icons:hover {
     transform: scale(1.2);
     color: #0056b3;
+  }
+
+  header .material-icons:focus,
+  header .material-icons:active {
+    outline: none;
   }
 
   /* ==== Footer Nav ==== */
@@ -84,12 +93,19 @@
     color: #007bff;
     font-size: 24px;
     transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+    outline: none;
+    user-select: none;
   }
 
   .bottom-nav .item:hover {
     transform: translateY(-5px) scale(1.15);
     color: #0056b3;
     text-shadow: 0 0 8px rgba(0,123,255,0.7);
+  }
+
+  .bottom-nav .item:focus,
+  .bottom-nav .item:active {
+    outline: none;
   }
 
   /* دکمه وسط (سبد خرید) */
@@ -103,11 +119,17 @@
     box-shadow: 0 6px 20px rgba(0,123,255,0.5);
     font-size: 28px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
   }
 
   .bottom-nav .center:hover {
     transform: scale(1.2) rotate(5deg);
     box-shadow: 0 10px 25px rgba(0,123,255,0.7);
+  }
+
+  .bottom-nav .center:focus,
+  .bottom-nav .center:active {
+    outline: none;
   }
 
   /* برای فاصله صفحه */
@@ -120,19 +142,19 @@
 <body>
 
 <header>
-  <span class="material-icons">account_circle</span>
+  <span class="material-icons" tabindex="0">account_circle</span>
   <img src="https://cdn.imgurl.ir/uploads/m75282_IMG_20251018_095031_589.jpg" class="logo" alt="گادتوشاپ">
-  <span class="material-icons">menu</span>
+  <span class="material-icons" tabindex="0">menu</span>
 </header>
 
 <main></main>
 
 <div class="bottom-nav">
-  <div class="item"><span class="material-icons">chat_bubble_outline</span></div>
-  <div class="item"><span class="material-icons">smartphone</span></div>
-  <div class="item center"><span class="material-icons">shopping_bag</span></div>
-  <div class="item"><span class="material-icons">account_circle</span></div>
-  <div class="item"><span class="material-icons">home</span></div>
+  <div class="item" tabindex="0"><span class="material-icons">chat_bubble_outline</span></div>
+  <div class="item" tabindex="0"><span class="material-icons">smartphone</span></div>
+  <div class="item center" tabindex="0"><span class="material-icons">shopping_bag</span></div>
+  <div class="item" tabindex="0"><span class="material-icons">account_circle</span></div>
+  <div class="item" tabindex="0"><span class="material-icons">home</span></div>
 </div>
 
 </body>
