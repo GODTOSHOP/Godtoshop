@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>گادتوشاپ</title>
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <!-- فونت فارسی -->
 <link href="https://cdn.fontcdn.ir/Font/Persian/IRANSansWeb/IRANSansWeb.css" rel="stylesheet" type="text/css">
@@ -37,14 +37,15 @@
   }
 
   header img.logo {
-    width: 38px;
-    height: 38px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #007bff;
   }
 
-  header i {
-    font-size: 22px;
+  header .material-icons {
+    font-size: 28px;
     color: #007bff;
     cursor: pointer;
   }
@@ -68,7 +69,7 @@
   .bottom-nav .item {
     text-align: center;
     color: #007bff;
-    font-size: 20px;
+    font-size: 24px;
   }
 
   /* دکمه وسط (سبد خرید) */
@@ -80,7 +81,7 @@
     border-radius: 50%;
     padding: 14px;
     box-shadow: 0 4px 15px rgba(0,123,255,0.3);
-    font-size: 22px;
+    font-size: 26px;
   }
 
   /* برای فاصله صفحه */
@@ -93,19 +94,19 @@
 <body>
 
 <header>
-  <i class="fa-regular fa-user"></i>
+  <span class="material-icons">account_circle</span>
   <img src="https://cdn.imgurl.ir/uploads/m75282_IMG_20251018_095031_589.jpg" class="logo" alt="گادتوشاپ">
-  <i class="fa-solid fa-bars"></i>
+  <span class="material-icons">menu</span>
 </header>
 
 <main></main>
 
 <div class="bottom-nav">
-  <div class="item"><i class="fa-regular fa-comment-dots"></i></div>
-  <div class="item"><i class="fa-solid fa-mobile-screen"></i></div>
-  <div class="item center"><i class="fa-solid fa-bag-shopping"></i></div>
-  <div class="item"><i class="fa-regular fa-user"></i></div>
-  <div class="item"><i class="fa-solid fa-house"></i></div>
+  <div class="item"><span class="material-icons">chat_bubble_outline</span></div>
+  <div class="item"><span class="material-icons">smartphone</span></div>
+  <div class="item center"><span class="material-icons">shopping_bag</span></div>
+  <div class="item"><span class="material-icons">account_circle</span></div>
+  <div class="item"><span class="material-icons">home</span></div>
 </div>
 
 </body>
