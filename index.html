@@ -1,186 +1,229 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>گادتوشاپ</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>گادتوشاپ</title>
 
-<!-- Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- فونت فارسی وزیرمتن -->
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
 
-<!-- فونت فارسی -->
-<link href="https://cdn.fontcdn.ir/Font/Persian/IRANSansWeb/IRANSansWeb.css" rel="stylesheet" type="text/css">
-
-<style>
-  body {
-    margin: 0;
-    font-family: "IRANSansWeb", sans-serif;
-    background: #121212; /* پس‌زمینه تاریک */
-    color: #f5f5f5;      /* متن سفید */
-  }
-
-  /* ==== Header ==== */
-  header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-    backdrop-filter: blur(20px);
-    background: rgba(255, 255, 255, 0.05); /* شیشه‌ای */
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    z-index: 1000;
-  }
-
-  header .logo {
-    width: 140px;
-    height: auto;
-    object-fit: cover;
-  }
-
-  header .material-icons {
-    font-size: 32px;
-    color: #66b2ff;
-    cursor: pointer;
-  }
-
-  /* ==== Footer Nav ==== */
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    padding: 8px 0 12px;
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.15);
-    border-top: 1px solid rgba(102,178,255,0.3);
-    z-index: 1000;
-  }
-
-  .bottom-nav .item {
-    text-align: center;
-    color: #66b2ff;
-    font-size: 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    max-width: 70px;
-  }
-
-  .bottom-nav .item .label {
-    font-size: 12px;
-    margin-top: 3px;
-    color: #66b2ff;
-    white-space: nowrap;
-  }
-
-  .bottom-nav .center {
-    position: relative;
-    top: -25px;
-    width: 80px;
-    height: 80px;
-    background: #66b2ff;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 6px 25px rgba(102,178,255,0.5);
-    font-size: 32px;
-    color: #fff;
-    flex: 0 0 auto;
-  }
-
-  /* فاصله محتوا */
-  main {
-    padding-top: 100px;
-    padding-bottom: 120px;
-  }
-
-  /* نمونه پنل شیشه‌ای داخل صفحه */
-  .glass-panel {
-    backdrop-filter: blur(15px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-  }
-
-  .header-left,
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-
-  /* واکنش‌گرایی برای موبایل */
-  @media (max-width: 480px) {
-    .bottom-nav .item {
-      font-size: 20px;
-      max-width: 60px;
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --glass: rgba(255, 255, 255, 0.08);
+      --border: rgba(255, 255, 255, 0.1);
+      --text: #f1f5f9;
+      --accent: #00aaff;
+      --blur: 16px;
+      --font: 'Vazirmatn', sans-serif;
     }
-    .bottom-nav .item .label {
-      font-size: 11px;
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      overflow-x: hidden;
     }
-    .bottom-nav .center {
-      width: 70px;
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
       height: 70px;
-      font-size: 28px;
-      top: -20px;
+      background: var(--glass);
+      backdrop-filter: blur(var(--blur));
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 18px;
+      z-index: 100;
     }
-  }
-</style>
+
+    .menu-icon, .login-text {
+      font-size: 22px;
+      cursor: pointer;
+      color: var(--accent);
+    }
+
+    .logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent), #0077cc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      font-size: 18px;
+      color: #fff;
+      box-shadow: 0 0 18px rgba(0, 170, 255, 0.4);
+    }
+
+    /* Glass Panel Scrolls with page */
+    .glass-panel {
+      margin-top: 90px;
+      margin-bottom: 90px;
+      padding: 40px;
+      text-align: center;
+      border-radius: 20px;
+      background: var(--glass);
+      backdrop-filter: blur(var(--blur));
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      width: 80%;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--glass);
+      backdrop-filter: blur(var(--blur));
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 80px;
+      z-index: 100;
+    }
+
+    .footer-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 12px;
+      color: var(--text);
+    }
+
+    .footer-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 20px;
+    }
+
+    /* Canvas for meteor animation */
+    #meteorCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
 </head>
+
 <body>
+  <canvas id="meteorCanvas"></canvas>
 
-<header>
-  <div class="header-left">
-    <span class="material-icons" tabindex="0">account_circle</span>
-  </div>
-  
-  <img src="https://cdn.imgurl.ir/uploads/m75282_IMG_20251018_095031_589.jpg" class="logo" alt="گادتوشاپ">
-  
-  <div class="header-right">
-    <span class="material-icons" tabindex="0">menu</span>
-  </div>
-</header>
+  <header>
+    <div class="menu-icon">☰</div>
+    <div class="logo">گت</div>
+    <div class="login-text">ورود</div>
+  </header>
 
-<main>
-  <div class="glass-panel">
-    <h2>بخش شیشه‌ای نمونه</h2>
-    <p>می‌توانید محتوای خود را در این پنل‌های شیشه‌ای قرار دهید.</p>
-  </div>
-</main>
+  <main>
+    <div class="glass-panel">
+      <h1>به گادتوشاپ خوش آمدید</h1>
+      <p>فروشگاه دیجیتال مطمئن و سریع — به زودی امکانات کامل فعال می‌شود.</p>
+    </div>
+  </main>
 
-<div class="bottom-nav">
-  <div class="item" tabindex="0">
-    <span class="material-icons">home</span>
-    <div class="label">خانه</div>
-  </div>
-  <div class="item" tabindex="0">
-    <span class="material-icons">account_circle</span>
-    <div class="label">پروفایل</div>
-  </div>
-  <div class="item center" tabindex="0">
-    <span class="material-icons">shopping_bag</span>
-  </div>
-  <div class="item" tabindex="0">
-    <span class="material-icons">smartphone</span>
-    <div class="label">اپ</div>
-  </div>
-  <div class="item" tabindex="0">
-    <span class="material-icons">chat_bubble_outline</span>
-    <div class="label">پشتیبانی</div>
-  </div>
-</div>
+  <footer>
+    <div class="footer-item">
+      <div class="footer-icon">🏠</div>
+      <div>خانه</div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-icon">👤</div>
+      <div>پروفایل</div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-icon">🛒</div>
+      <div>سبد</div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-icon">📱</div>
+      <div>اپ</div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-icon">💬</div>
+      <div>پشتیبانی</div>
+    </div>
+  </footer>
 
+  <script>
+    // ✨ انیمیشن شهاب‌سنگ‌ها
+    const canvas = document.getElementById('meteorCanvas');
+    const ctx = canvas.getContext('2d');
+    let meteors = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Meteor {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = -10;
+        this.size = Math.random() * 2 + 1;
+        this.speedY = Math.random() * 3 + 2;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.opacity = 1;
+        this.color = `rgba(0,170,255,${this.opacity})`;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.opacity -= 0.005;
+        if (this.opacity <= 0 || this.y > canvas.height) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = "#00aaff";
+        ctx.shadowBlur = 10;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < 60; i++) meteors.push(new Meteor());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      meteors.forEach(m => {
+        m.update();
+        m.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
 </body>
 </html>
