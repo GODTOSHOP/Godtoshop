@@ -4,13 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>گادتوشاپ — فروشگاه مطمئن و سریع</title>
-<meta name="description" content="خرید محصولات دیجیتال با پرداخت ایمن و سریع از گادتوشاپ.">
+<meta name="description" content="گادتوشاپ، فروشگاه مطمئن برای خرید سریع و ایمن محصولات دیجیتال با قیمت مناسب.">
 <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
 
 <style>
 :root {
   --bg: #0f0f10;
   --glass: rgba(255,255,255,0.03);
+  --glass-strong: rgba(255,255,255,0.06);
   --border: rgba(255,255,255,0.06);
   --text: #e9eef7;
   --muted: #a3acb9;
@@ -36,250 +37,281 @@ header {
   height: 72px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 18px;
   background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
   border-bottom: 1px solid var(--border);
   backdrop-filter: blur(var(--blur));
-  z-index: 100;
+  z-index: 120;
 }
+.header-left, .header-right { display:flex; gap:12px; align-items:center; }
+.menu-btn { font-size:26px; color:var(--accent1); cursor:pointer; width:44px; height:44px; display:flex; align-items:center; justify-content:center; }
+.logo-wrap { position: absolute; left: 50%; transform: translateX(-50%); display:flex; align-items:center; }
 .logo-img {
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, var(--accent1), var(--accent2));
-  padding: 6px;
-  box-shadow: 0 8px 30px rgba(0,212,255,0.2);
+  width:66px; height:66px; border-radius:14px; object-fit:contain;
+  box-shadow:0 6px 26px rgba(0,212,255,0.12);
+  background: linear-gradient(135deg,var(--accent1),var(--accent2));
+  padding:8px;
 }
 
-/* ===== Main Content ===== */
-main {
-  padding-top: 120px;
-  padding-bottom: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 50px;
-}
-
-/* Glass Hero Box */
+/* ===== Main / Hero ===== */
+main { padding-top:110px; padding-bottom:220px; min-height:100vh; }
+.container { max-width:1100px; margin:0 auto; padding:18px; }
+.hero { display:flex; justify-content:center; align-items:flex-start; gap:20px; margin-top:6px; }
 .glass-panel {
-  width: 90%;
-  max-width: 700px;
-  background: var(--glass);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 30px;
+  width:100%; max-width:720px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border:1px solid var(--glass-strong);
+  border-radius:18px;
+  padding:30px;
+  color:var(--text);
   backdrop-filter: blur(var(--blur));
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  position: sticky;
+  top: 90px;
+  z-index: 60;
 }
-.glass-panel h1 {
-  font-size: 22px;
-  margin-bottom: 10px;
+.glass-panel h1{ margin:0 0 8px 0; font-size:22px; }
+.glass-panel p{ margin:0 0 14px 0; color:var(--muted); line-height:1.6; }
+.search-row{ display:flex; gap:10px; margin-top:12px; }
+.search-row input{
+  flex:1; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.03);
+  background:transparent; color:var(--text); outline:none; font-size:14px;
 }
-.glass-panel p {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: 14px;
-}
-
-/* ===== Services Section ===== */
-.services-grid {
-  width: 90%;
-  max-width: 1000px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-}
-.service-card {
-  background: var(--glass);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  text-align: center;
-  padding: 36px 20px;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  transition: background 0.3s ease, transform 0.25s ease;
-}
-.service-card.active {
-  background: rgba(0,0,0,0.5);
-  transform: scale(0.97);
+.btn{
+  padding:10px 14px; border-radius:12px; border:none;
+  background:linear-gradient(90deg,var(--accent1),var(--accent2));
+  color:#021017; font-weight:700; cursor:pointer;
+  box-shadow:0 10px 28px rgba(0,200,255,0.12);
 }
 
-/* ===== Enamad Section ===== */
-.enamad-wrap {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
+/* spacer */
+.spacer{ height:900px; opacity:0.03; }
+
+/* ===== Services ===== */
+.services-section{ width:100%; padding:28px 18px 80px; display:flex; justify-content:center; position:relative; }
+.services-inner{ width:100%; max-width:1100px; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border:1px solid var(--glass-strong); border-radius:16px; padding:18px; display:flex; flex-direction:column; align-items:center; gap:18px; backdrop-filter: blur(10px); position:relative; z-index:30; }
+.services-grid{ width:100%; display:grid; grid-template-columns: repeat(3,1fr); gap:18px; }
+.service-card{
+  display:flex; flex-direction:column; align-items:center; gap:10px; padding:18px; border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+  cursor: pointer;
+  min-height:120px;
+  display:flex; align-items:center; justify-content:center; text-align:center;
+  font-weight:700; color:#f8fbff;
 }
-.enamad-wrap img {
-  width: 140px;
-  border-radius: 12px;
-}
-.legal-text {
-  text-align: center;
-  font-size: 13px;
-  color: var(--muted);
-  line-height: 1.8;
-  margin-top: 10px;
-}
+.service-card:hover{ transform: translateY(-6px); box-shadow:0 12px 36px rgba(0,0,0,0.6); }
+.service-card.blur { filter: blur(3px) brightness(0.75); }
+
+/* Enamad */
+.enamad-wrap{ margin-top:6px; display:flex; justify-content:center; width:100%; }
+.enamad-wrap img{ width:140px; max-width:40%; height:auto; display:block; border-radius:8px; }
+
+/* legal */
+.legal-text{ margin-top:8px; color:var(--muted); font-size:13px; text-align:center; line-height:1.6; padding:0 8px; }
 
 /* ===== Footer ===== */
-footer {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  height: 94px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-  border-top: 1px solid var(--border);
+footer{
+  position:fixed; left:0; right:0; bottom:0; height:94px; display:flex; justify-content:space-around; align-items:center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   backdrop-filter: blur(12px);
-  z-index: 130;
+  border-top:1px solid var(--border);
+  z-index:130;
 }
-.footer-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-  color: var(--muted);
-  font-size: 12px;
-}
-.footer-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.04);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--accent1);
-  font-size: 22px;
-  transition: all 0.25s ease;
-}
-.footer-item:hover .footer-icon {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 26px rgba(0,212,255,0.1);
-}
-.footer-item.center .footer-icon {
-  width: 74px;
-  height: 74px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent1), var(--accent2));
-  color: #021017;
-  font-size: 30px;
-  box-shadow: 0 16px 48px rgba(0,210,255,0.18);
-  border: none;
-}
-.footer-item.center span {
-  color: #fff;
-  font-weight: 700;
-}
+.footer-item{ display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--muted); font-size:12px; width:64px; }
+.footer-icon{ width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center; background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.03); color:var(--accent1); font-size:22px; transition: transform .18s ease, box-shadow .18s ease; }
+.footer-item:hover .footer-icon{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,212,255,0.08); }
+.footer-item.center{ transform: translateY(-26%); }
+.footer-item.center .footer-icon{ width:76px; height:76px; border-radius:50%; background: linear-gradient(135deg, var(--accent1), var(--accent2)); color:#021017; font-size:32px; box-shadow:0 16px 48px rgba(0,210,255,0.18); border:none; }
+.footer-item.center span{ color:#fff; font-weight:700; }
 
-/* ===== Raindrops ===== */
+/* ===== Raindrops (white, very faint) ===== */
 .raindrop {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: rgba(0,212,255,0.85);
+  width: 8px;
+  height: 8px;
+  background: rgba(255,255,255,0.18); /* سفید خیلی کم رنگ */
   border-radius: 50%;
   pointer-events: none;
-  z-index: 50;
-  box-shadow: 0 0 10px rgba(0,212,255,0.4);
+  z-index: 80;
+  filter: blur(0.8px);
+  box-shadow: 0 0 6px rgba(255,255,255,0.06);
 }
+
+/* Responsive tweaks */
+@media (max-width:920px) { .services-grid{ grid-template-columns: repeat(3,1fr) } .logo-img{ width:56px; height:56px; } }
+@media (max-width:720px) { .services-grid{ grid-template-columns: repeat(2,1fr) } .enamad-wrap img{ width:120px } }
+@media (max-width:420px) { .services-grid{ grid-template-columns: repeat(1,1fr) } .logo-img{ width:52px; height:52px; } footer{ height:86px } .footer-item.center .footer-icon{ width:64px; height:64px } }
 </style>
 </head>
 <body>
 
 <header>
-  <img src="https://cdn.imgurl.ir/uploads/q72397_IMG_20251018_095031_589.jpg" alt="گادتوشاپ" class="logo-img">
+  <div class="header-right">
+    <div class="menu-btn material-icons-round" title="منو">menu</div>
+  </div>
+
+  <div class="logo-wrap" aria-hidden="false">
+    <img src="https://cdn.imgurl.ir/uploads/q72397_IMG_20251018_095031_589.jpg" alt="گادتوشاپ" class="logo-img">
+  </div>
+
+  <div class="header-left">
+    <div class="menu-btn material-icons-round" title="حساب کاربری">person</div>
+  </div>
 </header>
 
 <main>
-  <section class="glass-panel">
-    <h1>گادتوشاپ — فروشگاه دیجیتال</h1>
-    <p>به زودی نسخه‌ی کامل سایت راه‌اندازی می‌شود. در حال حاضر می‌توانید بخش‌های زیر را مشاهده کنید.</p>
-  </section>
+  <div class="container">
+    <section class="hero">
+      <div class="glass-panel" id="glassPanel" aria-label="پنل اصلی">
+        <h1>گادتوشاپ — فروشگاه دیجیتال</h1>
+        <p>همین حالا آماده شو، به‌زودی فروشگاه کامل راه‌اندازی می‌شود. این پنل هنگام اسکرول همراهت می‌ماند.</p>
 
-  <section class="services-grid">
-    <div class="service-card">شارژ فوری</div>
-    <div class="service-card">شارژ ۲۴ ساعته</div>
-    <div class="service-card">پرداخت ایمن</div>
-    <div class="service-card">پنل کاربری</div>
-    <div class="service-card">ضمانت قیمت</div>
-    <div class="service-card">قدمت از ۱۴۰۳</div>
-  </section>
+        <div class="search-row">
+          <input type="search" placeholder="جستجوی محصول، بازی یا گیفت‌کارت...">
+          <button class="btn">جستجو</button>
+        </div>
+      </div>
+    </section>
 
-  <div class="enamad-wrap">
-    <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=436260&Code=qC2Y8oY8fOCCNs1bz6vV">
-      <img src="https://Trustseal.eNamad.ir/logo.aspx?id=436260&Code=qC2Y8oY8fOCCNs1bz6vV" alt="enamad">
-    </a>
+    <div class="spacer"></div>
   </div>
 
-  <div class="legal-text">
-    کلیه حقوق این سایت متعلق به گادتوشاپ می‌باشد.<br>
-    فعالیت‌های سایت مطابق با قوانین جمهوری اسلامی ایران است.
-  </div>
+  <section class="services-section" aria-label="خدمات">
+    <div class="services-inner">
+      <div class="services-grid">
+        <div class="service-card">شارژ فوری</div>
+        <div class="service-card">شارژ ۲۴ ساعته</div>
+        <div class="service-card">پرداخت ایمن</div>
+        <div class="service-card">پنل کاربری</div>
+        <div class="service-card">ضمانت قیمت</div>
+        <div class="service-card">قدمت از ۱۴۰۳</div>
+      </div>
+
+      <div class="enamad-wrap">
+        <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir">
+          <img src="https://cdn.imgurl.ir/uploads/f940858_enamad.webp" alt="eNamad">
+        </a>
+      </div>
+
+      <div class="legal-text">
+        کلیه حقوق این سایت متعلق به گادتوشاپ می‌باشد.<br>
+        فعالیت‌های سایت مطابق با قوانین جمهوری اسلامی ایران است.
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="footer-item"><div class="footer-icon">🏠</div><div>خانه</div></div>
-  <div class="footer-item"><div class="footer-icon">👤</div><div>ورود</div></div>
-  <div class="footer-item center"><div class="footer-icon">🛍</div><span>سبد</span></div>
-  <div class="footer-item"><div class="footer-icon">📱</div><div>اپ</div></div>
-  <div class="footer-item"><div class="footer-icon">💬</div><div>پشتیبانی</div></div>
+  <div class="footer-item"><div class="footer-icon material-icons-round" aria-hidden="true">home</div><div>خانه</div></div>
+  <div class="footer-item"><div class="footer-icon material-icons-round" aria-hidden="true">person</div><div>ورود</div></div>
+  <div class="footer-item center" role="button" aria-label="سبد خرید"><div class="footer-icon material-icons-round" aria-hidden="true">shopping_bag</div><span>سبد</span></div>
+  <div class="footer-item"><div class="footer-icon material-icons-round" aria-hidden="true">apps</div><div>اپ</div></div>
+  <div class="footer-item"><div class="footer-icon material-icons-round" aria-hidden="true">support_agent</div><div>پشتیبانی</div></div>
 </footer>
 
 <script>
-// ===== افکت قطره‌ها =====
+/* ===== Raindrops behavior per spec:
+   - white, very faint drops
+   - when a drop overlaps a .service-card => add .blur (blur + darker)
+   - when passes, remove .blur
+   - spawn 6 drops every 10 seconds
+   - drops removed after leaving viewport
+*/
 document.addEventListener('DOMContentLoaded', () => {
-  const serviceCards = document.querySelectorAll('.service-card');
+  const serviceCards = Array.from(document.querySelectorAll('.service-card'));
   const raindrops = [];
 
-  function createRaindrop() {
+  function createRaindropAt(x) {
     const drop = document.createElement('div');
-    drop.classList.add('raindrop');
-    drop.style.left = Math.random() * window.innerWidth + 'px';
-    drop.style.top = '-20px';
-    drop.dataset.speed = (Math.random() * 3 + 2).toFixed(2);
+    drop.className = 'raindrop';
+    drop.style.left = (x ?? Math.random() * window.innerWidth) + 'px';
+    drop.style.top = '-12px';
+    // speed small random for slightly varied fall
+    drop.dataset.speed = (Math.random() * 1.6 + 1.2).toFixed(2);
     document.body.appendChild(drop);
     raindrops.push(drop);
+    return drop;
   }
 
-  // ساخت ۵۰ قطره
-  for (let i = 0; i < 50; i++) createRaindrop();
+  // spawn 6 drops (optionally slightly stagger their horizontal positions)
+  function spawnSixDrops() {
+    const baseX = Math.random() * window.innerWidth;
+    for (let i = 0; i < 6; i++) {
+      // spread them a bit around baseX so they don't overlap exactly
+      const offset = (Math.random() - 0.5) * 220;
+      createRaindropAt(Math.min(Math.max(baseX + offset, 8), window.innerWidth - 8));
+    }
+  }
 
-  function animateRaindrops() {
-    raindrops.forEach(drop => {
-      let speed = parseFloat(drop.dataset.speed);
-      let top = parseFloat(drop.style.top);
-      top += speed;
+  // initial spawn once
+  spawnSixDrops();
+  // every 10 seconds spawn 6
+  setInterval(spawnSixDrops, 10000);
+
+  function animate() {
+    for (let i = raindrops.length - 1; i >= 0; i--) {
+      const drop = raindrops[i];
+      const speed = parseFloat(drop.dataset.speed) || 1.6;
+      const top = (parseFloat(drop.style.top) || -12) + speed;
       drop.style.top = top + 'px';
 
-      // برخورد با کارت‌ها
-      serviceCards.forEach(card => {
+      // check overlap with cards
+      const dropX = (parseFloat(drop.style.left) || 0) + 4; // center approx
+      const dropY = top + 4;
+      let hitAny = false;
+      for (const card of serviceCards) {
         const rect = card.getBoundingClientRect();
-        const dropX = parseFloat(drop.style.left);
-        const dropY = top + 5;
         if (dropX >= rect.left && dropX <= rect.right && dropY >= rect.top && dropY <= rect.bottom) {
-          card.classList.add('active');
-        } else if (dropY > rect.bottom) {
-          card.classList.remove('active');
+          if (!card.classList.contains('blur')) card.classList.add('blur');
+          hitAny = true;
+        } else {
+          // only remove blur when dropY passed below card bottom (handled below)
         }
-      });
-
-      // بازنشانی قطره‌ها
-      if (top > window.innerHeight) {
-        drop.style.top = '-20px';
-        drop.style.left = Math.random() * window.innerWidth + 'px';
-        drop.dataset.speed = (Math.random() * 3 + 2).toFixed(2);
       }
-    });
-    requestAnimationFrame(animateRaindrops);
+
+      // For each card, if drop has passed below it, remove blur (this ensures it resets)
+      for (const card of serviceCards) {
+        const rect = card.getBoundingClientRect();
+        if (dropY > rect.bottom && card.classList.contains('blur')) {
+          // Only remove if there are no other drops currently overlapping that card
+          // Check other drops
+          let otherOverlapping = false;
+          for (let j = 0; j < raindrops.length; j++) {
+            if (j === i) continue;
+            const other = raindrops[j];
+            const ox = (parseFloat(other.style.left) || 0) + 4;
+            const oy = (parseFloat(other.style.top) || -12) + 4;
+            if (ox >= rect.left && ox <= rect.right && oy >= rect.top && oy <= rect.bottom) {
+              otherOverlapping = true;
+              break;
+            }
+          }
+          if (!otherOverlapping) card.classList.remove('blur');
+        }
+      }
+
+      // remove drop when below viewport
+      if (top > window.innerHeight + 20) {
+        drop.remove();
+        raindrops.splice(i, 1);
+      }
+    }
+
+    requestAnimationFrame(animate);
   }
 
-  animateRaindrops();
+  animate();
+
+  // If viewport resizes, keep drops within bounds (optional)
+  window.addEventListener('resize', () => {
+    for (const drop of raindrops) {
+      const left = parseFloat(drop.style.left) || 0;
+      if (left > window.innerWidth - 8) drop.style.left = (window.innerWidth - 12) + 'px';
+    }
+  });
 });
 </script>
 
