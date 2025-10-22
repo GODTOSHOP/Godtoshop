@@ -117,81 +117,169 @@ footer{position:fixed;left:0;right:0;bottom:0;height:94px;display:flex;justify-c
   <div class="footer-item"><div class="footer-icon material-icons-round">apps</div><div>اپ</div></div>
   <div class="footer-item"><div class="footer-icon material-icons-round">support_agent</div><div>پشتیبانی</div></div>
 </footer>
-
 <script>
 /* ===== Meteor Canvas Animation ===== */
-const canvas=document.getElementById('meteorCanvas');
-const ctx=canvas.getContext('2d');
-let DPR=window.devicePixelRatio||1;
-function resizeCanvas(){DPR=window.devicePixelRatio||1;canvas.width=window.innerWidth*DPR;canvas.height=window.innerHeight*DPR;canvas.style.width=window.innerWidth+'px';canvas.style.height=window.innerHeight+'px';ctx.setTransform(DPR,0,0,DPR,0,0);}
-window.addEventListener('resize',resizeCanvas);
+const canvas = document.getElementById('meteorCanvas');
+const ctx = canvas.getContext('2d');
+let DPR = window.devicePixelRatio || 1;
+
+function resizeCanvas() {
+  DPR = window.devicePixelRatio || 1;
+  canvas.width = window.innerWidth * DPR;
+  canvas.height = window.innerHeight * DPR;
+  canvas.style.width = window.innerWidth + 'px';
+  canvas.style.height = window.innerHeight + 'px';
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+}
+window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
-function getGroundY(){return window.innerHeight-140;}
-class Meteor{constructor(){this.reset();}reset(){this.x=Math.random()*(window.innerWidth+200)-100;this.y=-Math.random()*400-20;this.len=Math.random()*18+6;this.size=Math.random()*2+1;this.speedY=Math.random()*3+2.5;this.angle=Math.PI/2+(Math.random()*0.6-0.3);this.vx=Math.cos(this.angle)*(Math.random()*1.8+0.8);this.vy=Math.sin(this.angle)*this.speedY;this.opacity=Math.random()*0.6+0.6;this.color=`rgba(0,210,255,${this.opacity})`;this.trail=[];}update(){this.x+=this.vx;this.y+=this.vy;this.vy+=0.02;this.trail.push({x:this.x,y:this.y});if(this.trail.length>10)this.trail.shift();if(this.y>=getGroundY()){spawnParticles(this.x,getGroundY(),this.color);this.reset();}if(this.x<-200||this.x>window.innerWidth+200)this.reset();}draw(){for(let i=0;i<this.trail.length;i++){const t=this.trail[i];const alpha=i/this.trail.length*this.opacity*0.8;ctx.beginPath();ctx.fillStyle=`rgba(0,210,255,${alpha})`;ctx.arc(t.x,t.y,this.size*(i/6+0.3),0,Math.PI*2);ctx.fill();}ctx.beginPath();ctx.fillStyle=this.color;ctx.shadowColor='#00d4ff';ctx.shadowBlur=14;ctx.arc(this.x,this.y,this.size+1.2,0,Math.PI*2);ctx.fill();ctx.shadowBlur=0;}}
-class Particle{constructor(x,y,color){this.x=x;this.y=y;const speed=Math.random()*4+1;const ang=Math.random()*Math.PI*2;this.vx=Math.cos(ang)*speed;this.vy=Math.sin(ang)*speed;this.life=Math.random()*50+30;this.size=Math.random()*2+0.6;this.color=color;}update(){this.x+=this.vx;this.y+=this.vy;this.vy+=0.06;this.life--;}draw(){const alpha=Math.max(this.life/70,0);ctx.beginPath();ctx.fillStyle=this.color.replace(/,[^,]+\)$/,`,`+alpha+')');ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();}}
-let meteors=[],particles=[];for(let i=0;i<45;i++)meteors.push(new Meteor());
-function spawnParticles(x,y,color){const count=Math.floor(Math.random()*18+14);for(let i=0;i<count;i++){particles.push(new Particle(x+(Math.random()*20-10),y+(Math.random()*6-3),color));}}
-function animateCanvas(){ctx.clearRect(0,0,canvas.width,canvas.height);meteors.forEach(m=>{m.update();m.draw();});for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.update();p.draw();if(p.life<=0||p.y>window.innerHeight+50)particles.splice(i,1);}requestAnimationFrame(animateCanvas);}
+
+function getGroundY() {
+  return window.innerHeight - 140;
+}
+
+class Meteor {
+  constructor() { this.reset(); }
+  reset() {
+    this.x = Math.random() * (window.innerWidth + 200) - 100;
+    this.y = -Math.random() * 400 - 20;
+    this.len = Math.random() * 18 + 6;
+    this.size = Math.random() * 2 + 1;
+    this.speedY = Math.random() * 3 + 2.5;
+    this.angle = Math.PI / 2 + (Math.random() * 0.6 - 0.3);
+    this.vx = Math.cos(this.angle) * (Math.random() * 1.8 + 0.8);
+    this.vy = Math.sin(this.angle) * this.speedY;
+    this.opacity = Math.random() * 0.6 + 0.6;
+    this.color = `rgba(0,210,255,${this.opacity})`;
+    this.trail = [];
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy += 0.02;
+    this.trail.push({ x: this.x, y: this.y });
+    if (this.trail.length > 10) this.trail.shift();
+    if (this.y >= getGroundY()) {
+      spawnParticles(this.x, getGroundY(), this.color);
+      this.reset();
+    }
+    if (this.x < -200 || this.x > window.innerWidth + 200) this.reset();
+  }
+  draw() {
+    for (let i = 0; i < this.trail.length; i++) {
+      const t = this.trail[i];
+      const alpha = (i / this.trail.length) * this.opacity * 0.8;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(0,210,255,${alpha})`;
+      ctx.arc(t.x, t.y, this.size * (i / 6 + 0.3), 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.beginPath();
+    ctx.fillStyle = this.color;
+    ctx.shadowColor = '#00d4ff';
+    ctx.shadowBlur = 14;
+    ctx.arc(this.x, this.y, this.size + 1.2, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+  }
+}
+
+class Particle {
+  constructor(x, y, color) {
+    this.x = x;
+    this.y = y;
+    const speed = Math.random() * 4 + 1;
+    const ang = Math.random() * Math.PI * 2;
+    this.vx = Math.cos(ang) * speed;
+    this.vy = Math.sin(ang) * speed;
+    this.life = Math.random() * 50 + 30;
+    this.size = Math.random() * 2 + 0.6;
+    this.color = color;
+  }
+  update() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.vy += 0.06;
+    this.life--;
+  }
+  draw() {
+    const alpha = Math.max(this.life / 70, 0);
+    ctx.beginPath();
+    ctx.fillStyle = this.color.replace(/,[^,]+\)$/, `,${alpha})`);
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+let meteors = [], particles = [];
+for (let i = 0; i < 45; i++) meteors.push(new Meteor());
+function spawnParticles(x, y, color) {
+  const count = Math.floor(Math.random() * 18 + 14);
+  for (let i = 0; i < count; i++) {
+    particles.push(new Particle(x + (Math.random() * 20 - 10), y + (Math.random() * 6 - 3), color));
+  }
+}
+
+function animateCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  meteors.forEach(m => { m.update(); m.draw(); });
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.update();
+    p.draw();
+    if (p.life <= 0 || p.y > window.innerHeight + 50) particles.splice(i, 1);
+  }
+  requestAnimationFrame(animateCanvas);
+}
 animateCanvas();
 
-/* ===== Raindrops ===== */
-const serviceCards=document.querySelectorAll('.service-card');
-function createRaindrop(){
-  const drop=document.createElement('div');
+/* ===== Raindrops Effect ===== */
+const serviceCards = document.querySelectorAll('.service-card');
+
+function createRaindrop() {
+  const drop = document.createElement('div');
   drop.classList.add('raindrop');
-  drop.style.left=Math.random()*window.innerWidth+'px';
-  drop.style.top='-20px';
-  drop.dataset.speed=(Math.random()*3+2).toFixed(2);
+  drop.style.left = Math.random() * window.innerWidth + 'px';
+  drop.style.top = '-20px';
+  drop.dataset.speed = (Math.random() * 3 + 2).toFixed(2);
   document.body.appendChild(drop);
   return drop;
 }
-let raindrops=[];
-for(let i=0;i<40;i++){ 
-  raindrops.push(createRaindrop()); 
+
+let raindrops = [];
+for (let i = 0; i < 40; i++) {
+  raindrops.push(createRaindrop());
 }
 
-function animateRaindrops(){
-  raindrops.forEach(drop=>{
+function animateRaindrops() {
+  raindrops.forEach(drop => {
     let speed = parseFloat(drop.dataset.speed);
     let top = parseFloat(drop.style.top);
     top += speed;
-    drop.style
-    // ادامه کد جاوااسکریپت برای قطره‌ها
-  for (let i = 0; i < 40; i++) {
-    raindrops.push(createRaindrop());
-  }
+    drop.style.top = top + 'px';
 
-  function animateRaindrops() {
-    raindrops.forEach(drop => {
-      let speed = parseFloat(drop.dataset.speed);
-      let top = parseFloat(drop.style.top);
-      top += speed;
-      drop.style.top = top + 'px';
-
-      // بررسی برخورد با کارت‌ها
-      serviceCards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        const dropX = parseFloat(drop.style.left);
-        const dropY = top + 6; // مرکز قطره
-        if (dropX >= rect.left && dropX <= rect.right && dropY >= rect.top && dropY <= rect.bottom) {
-          card.classList.add('active');
-        } else if (dropY > rect.bottom) {
-          card.classList.remove('active');
-        }
-      });
-
-      // بازنشانی موقعیت قطره‌ها
-      if (top > window.innerHeight) {
-        drop.style.top = '-20px';
-        drop.style.left = Math.random() * window.innerWidth + 'px';
-        drop.dataset.speed = (Math.random() * 3 + 2).toFixed(2);
+    // برخورد با کارت‌ها
+    serviceCards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const dropX = parseFloat(drop.style.left);
+      const dropY = top + 6;
+      if (dropX >= rect.left && dropX <= rect.right && dropY >= rect.top && dropY <= rect.bottom) {
+        card.classList.add('active');
+      } else if (dropY > rect.bottom) {
+        card.classList.remove('active');
       }
     });
-    requestAnimationFrame(animateRaindrops);
-  }
 
-  animateRaindrops();
-});
+    // بازنشانی قطره
+    if (top > window.innerHeight) {
+      drop.style.top = '-20px';
+      drop.style.left = Math.random() * window.innerWidth + 'px';
+      drop.dataset.speed = (Math.random() * 3 + 2).toFixed(2);
+    }
+  });
+  requestAnimationFrame(animateRaindrops);
+}
+animateRaindrops();
 </script>
 </body>
 </html>
