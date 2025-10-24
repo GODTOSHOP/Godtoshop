@@ -1,107 +1,105 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
+<!DOCTYPE html>
+<html lang="fa">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>گادتوشاپ</title>
-
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منوی اندیکارتور</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #121212;
-            color: white;
+            box-sizing: border-box;
         }
 
-        /* هدر شیشه‌ای */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            position: relative;
             width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu {
+            background-color: #333;
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            position: relative;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .menu ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .menu-item {
+            color: #fff;
             padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            z-index: 10;
-            transition: background 0.3s ease;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+            transition: color 0.3s;
         }
 
-        header.scrolled {
-            background: rgba(255, 255, 255, 0.2);
+        .menu-item:hover {
+            color: #00ff99;
         }
 
-        /* تنظیمات برای موبایل و دسکتاپ */
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
+        .menu-item.active {
+            color: #00ff99;
         }
 
-        .header-container img {
-            width: 50px;
-            height: auto;
-        }
-
-        .menu-icon, .profile-icon {
-            cursor: pointer;
-            font-size: 30px;
-        }
-
-        /* تنظیمات برای موبایل */
-        @media (max-width: 768px) {
-            header {
-                padding: 10px 15px;
-            }
-
-            .header-container {
-                display: block;
-                text-align: center;
-            }
-
-            .menu-icon {
-                font-size: 36px;
-                margin-top: 10px;
-            }
-
-            .profile-icon {
-                margin-top: 10px;
-            }
-        }
-
-        /* جاوا اسکریپت برای اسکرول */
-        .scrolled {
-            background-color: rgba(0, 0, 0, 0.6); /* تغییر پس‌زمینه بعد از اسکرول */
+        .indicator {
+            position: absolute;
+            bottom: 0;
+            width: 25%;
+            height: 4px;
+            background-color: #00ff99;
+            border-radius: 2px;
+            transition: left 0.3s ease;
         }
     </style>
 </head>
 <body>
-
-    <!-- هدر شیشه‌ای -->
-    <header id="header">
-        <div class="header-container">
-            <div class="profile-icon" onclick="window.location.href='login.html'">👤</div>
-            <img src="https://cdn.imgurl.ir/uploads/s782197_IMG_20251018_095031_589.jpg" alt="گادتوشاپ لوگو">
-            <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        </div>
-    </header>
+    <div class="container">
+        <nav class="menu">
+            <ul>
+                <li><a href="#" class="menu-item active">خانه</a></li>
+                <li><a href="#" class="menu-item">درباره ما</a></li>
+                <li><a href="#" class="menu-item">خدمات</a></li>
+                <li><a href="#" class="menu-item">تماس با ما</a></li>
+            </ul>
+            <div class="indicator"></div>
+        </nav>
+    </div>
 
     <script>
-        // اسکرول و تغییر پس‌زمینه هدر
-        window.addEventListener("scroll", function () {
-            const header = document.getElementById("header");
-            if (window.scrollY > 50) {
-                header.classList.add("scrolled");
-            } else {
-                header.classList.remove("scrolled");
-            }
+        const menuItems = document.querySelectorAll('.menu-item');
+        const indicator = document.querySelector('.indicator');
+
+        menuItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                // Remove active class from all menu items
+                menuItems.forEach(item => item.classList.remove('active'));
+                
+                // Add active class to clicked menu item
+                item.classList.add('active');
+
+                // Move indicator to clicked menu item
+                const width = item.offsetWidth;
+                const left = item.offsetLeft;
+                
+                indicator.style.width = `${width}px`;
+                indicator.style.left = `${left}px`;
+            });
         });
     </script>
-
 </body>
 </html>
