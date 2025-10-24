@@ -21,7 +21,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 20px;
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -35,52 +35,60 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
-        header .profile {
-            text-align: right;
+        /* تنظیمات برای موبایل و دسکتاپ */
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
         }
 
-        header .profile h1 {
-            margin: 0;
+        .header-container img {
+            width: 50px;
+            height: auto;
         }
 
-        header .profile p {
-            margin: 0;
-            font-size: 14px;
-        }
-
-        header .menu-icon {
+        .menu-icon, .profile-icon {
             cursor: pointer;
             font-size: 30px;
         }
 
-        /* لوگو */
-        .logo {
-            width: 50px;
-            height: auto;
+        /* تنظیمات برای موبایل */
+        @media (max-width: 768px) {
+            header {
+                padding: 10px 15px;
+            }
+
+            .header-container {
+                display: block;
+                text-align: center;
+            }
+
+            .menu-icon {
+                font-size: 36px;
+                margin-top: 10px;
+            }
+
+            .profile-icon {
+                margin-top: 10px;
+            }
         }
 
         /* جاوا اسکریپت برای اسکرول */
         .scrolled {
             background-color: rgba(0, 0, 0, 0.6); /* تغییر پس‌زمینه بعد از اسکرول */
         }
-
-        /* تنظیمات برای اینکه منو در سمت چپ باشد */
-        .menu-icon {
-            font-size: 36px;
-        }
-
     </style>
 </head>
 <body>
 
     <!-- هدر شیشه‌ای -->
     <header id="header">
-        <div class="profile">
-            <img src="https://cdn.imgurl.ir/uploads/s782197_IMG_20251018_095031_589.jpg" alt="گادتوشاپ لوگو" class="logo">
-            <h1>گادتوشاپ</h1>
-            <p>خرید راحت را با گادتوشاپ تجربه کنید</p>
+        <div class="header-container">
+            <div class="profile-icon" onclick="window.location.href='login.html'">👤</div>
+            <img src="https://cdn.imgurl.ir/uploads/s782197_IMG_20251018_095031_589.jpg" alt="گادتوشاپ لوگو">
+            <div class="menu-icon" onclick="toggleMenu()">☰</div>
         </div>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </header>
 
     <script>
