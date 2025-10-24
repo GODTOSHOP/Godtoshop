@@ -1,164 +1,480 @@
-<!DOCTYPE html>
-<html lang="fa">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه آنلاین</title>
-    <style>
-        /* تنظیمات عمومی */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            direction: rtl;
-            background-color: #121212; /* تم تیره */
-            color: white; /* متن سفید */
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>گادتوشاپ — بدنهٔ سایت</title>
 
-        /* صفحه شیشه‌ای بالای صفحه */
-        .glass-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.1); /* شیشه‌ای */
-            backdrop-filter: blur(10px); /* افکت بلور */
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-        }
+  <!-- فونت فارسی Vazirmatn -->
+  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
 
-        /* آیکون آدمک (پروفایل) */
-        .profile-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            overflow: hidden;
-        }
+  <!-- Material Icons (Round) -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-        .profile-icon .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+  <style>
+    :root{
+      --bg: #121212;
+      --glass: rgba(255,255,255,0.03);
+      --glass-strong: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eef8;
+      --muted: #9aa6b2;
+      --accent1: #00d4ff;
+      --accent2: #00ffa3;
+      --blur: 14px;
+      --shadow-accent: rgba(0,212,255,0.12);
+      --font: 'Vazirmatn', sans-serif;
+    }
 
-        /* لوگو فروشگاه */
-        .glass-header .logo img {
-            width: 50px;
-            height: auto;
-        }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
 
-        /* آیکون همبرگر */
-        .menu-icon {
-            font-size: 30px;
-            cursor: pointer;
-            color: white; /* رنگ سفید برای آیکون */
-        }
+    /* ---------- Header ---------- */
+    header{
+      position:fixed;top:0;left:0;right:0;height:72px;
+      display:flex;align-items:center;justify-content:space-between;padding:0 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      backdrop-filter: blur(var(--blur));
+      border-bottom:1px solid var(--border);
+      z-index:120;
+    }
+    .header-left, .header-right { display:flex; align-items:center; gap:12px; }
+    .menu-btn{ font-size:26px; color:var(--accent1); cursor:pointer; display:flex; align-items:center; justify-content:center; width:44px; height:44px; }
+    .login-text{ font-weight:600; color:var(--text); padding:8px 10px; border-radius:10px; background:transparent; cursor:pointer; }
+    .logo-wrap{ display:flex; align-items:center; justify-content:center; position:absolute; left:50%; transform:translateX(-50%); }
 
-        /* منوی کشویی */
-        .side-menu {
-            position: fixed;
-            top: 0;
-            right: -250px; /* مخفی بودن در ابتدا */
-            width: 250px;
-            height: 100%;
-            background-color: #333; /* پس‌زمینه تیره برای منو */
-            color: white;
-            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-            transition: right 0.3s ease;
-            padding-top: 60px;
-        }
+    .logo-img{
+      width:66px; height:66px; border-radius:14px; object-fit:contain;
+      box-shadow:0 6px 26px var(--shadow-accent); background:linear-gradient(135deg,var(--accent1),var(--accent2));
+      display:block; padding:8px;
+    }
 
-        .side-menu ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    /* ---------- Main / Hero (glass panel sticky) ---------- */
+    main{ padding-top:110px; padding-bottom:220px; min-height:100vh; }
 
-        .side-menu ul li {
-            margin: 20px 0;
-            text-align: right;
-        }
+    .container{ max-width:1100px; margin:0 auto; padding:18px; }
 
-        .side-menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 10px 20px;
-            display: block;
-        }
+    .hero {
+      display:flex; justify-content:center; align-items:flex-start; gap:20px; margin-top:6px;
+    }
 
-        /* منوی باز شده */
-        .side-menu.open {
-            right: 0;
-        }
+    .glass-panel {
+      width:100%; max-width:720px;
+      margin: 0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border:1px solid var(--glass-strong);
+      border-radius:18px;
+      padding:30px;
+      color:var(--text);
+      backdrop-filter: blur(var(--blur));
+      box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+      position: -webkit-sticky;
+      position: sticky;
+      top: 90px;
+    }
 
-        /* پاورقی */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
+    .glass-panel h1{ margin:0 0 8px 0; font-size:22px; letter-spacing:0.2px }
+    .glass-panel p{ margin:0 0 14px 0; color:var(--muted); line-height:1.6 }
 
-        footer .footer-links a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
+    .search-row{ display:flex; gap:10px; margin-top:12px }
+    .search-row input{
+      flex:1;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:var(--text);
+      outline:none;font-size:14px;
+    }
+    .btn{
+      padding:10px 14px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#021017;font-weight:700;cursor:pointer;
+      box-shadow:0 10px 28px rgba(0,200,255,0.12);
+    }
 
-        footer .footer-links a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    /* demo content to allow scrolling */
+    .spacer{ height:900px; opacity:0.03 }
+
+    /* ---------- Services area (بعد از محتوا) ---------- */
+    .services-section{
+      width:100%;
+      padding:28px 18px 80px;
+      display:flex;
+      justify-content:center;
+    }
+    .services-inner{
+      max-width:1100px;
+      width:100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--glass-strong);
+      border-radius:16px;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+      backdrop-filter: blur(10px);
+    }
+    .services-grid{
+      width:100%;
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:18px;
+    }
+    .service-card{
+      display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px;border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .service-card:hover{ transform:translateY(-8px); box-shadow:0 12px 36px rgba(0,0,0,0.6) }
+
+    .service-icon{
+      width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background: rgba(255,255,255,0.02); padding:8px;
+      transition: transform .18s ease;
+    }
+    /* Make the provided PNG icons look blue-ish */
+    .service-icon img{
+      width:100%;height:100%;object-fit:contain;
+      filter: grayscale(1) sepia(1) hue-rotate(200deg) saturate(6) brightness(0.95);
+      transition: filter .18s ease, transform .18s ease;
+    }
+    .service-card:hover .service-icon img{ transform:scale(1.05) }
+
+    .service-title{ color:#f8fbff; font-weight:700; font-size:14px; text-align:center }
+
+    /* Enamad image */
+    .enamad-wrap{ margin-top:6px; display:flex; align-items:center; justify-content:center; width:100% }
+    .enamad-wrap img{ width:140px; max-width:40%; height:auto; display:block }
+
+    /* Legal text */
+    .legal-text{ margin-top:8px; color:var(--muted); font-size:13px; text-align:center; line-height:1.6; padding:0 8px }
+
+    /* ---------- Footer (fixed) ---------- */
+    footer{
+      position:fixed; left:0; right:0; bottom:0; height:94px;
+      display:flex; justify-content:space-around; align-items:center;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      backdrop-filter: blur(12px);
+      border-top:1px solid var(--border);
+      z-index:130;
+    }
+
+    .footer-item{ display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--muted); font-size:12px; width:64px; }
+    .footer-icon{
+      width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.03); color:var(--accent1); font-size:22px;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .footer-item:hover .footer-icon{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,212,255,0.08) }
+
+    /* center big cart */
+    .footer-item.center{ transform: translateY(-26%); }
+    .footer-item.center .footer-icon{
+      width:76px;height:76px;border-radius:50%;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      color:#021017; font-size:32px; box-shadow:0 16px 48px rgba(0,210,255,0.18);
+      border:none;
+    }
+    .footer-item.center span{ color:#fff; font-weight:700 }
+
+    /* small circular indicator under center like image (optional) */
+    .center-indicator{
+      position: absolute; left:50%; transform:translateX(-50%); bottom:70px; width:46px;height:6px;border-radius:6px;
+      background: rgba(255,255,255,0.03);
+      display:none;
+    }
+
+    /* Responsive */
+    @media (max-width:920px){
+      .services-grid{ grid-template-columns: repeat(3,1fr) }
+      .logo-img{ width:56px;height:56px }
+    }
+    @media (max-width:720px){
+      .services-grid{ grid-template-columns: repeat(2,1fr) }
+      .service-icon{ width:70px;height:70px }
+      .enamad-wrap img{ width:120px }
+    }
+    @media (max-width:420px){
+      .services-grid{ grid-template-columns: repeat(1,1fr) }
+      .logo-img{ width:52px;height:52px }
+      .service-icon{ width:64px;height:64px }
+      footer{ height:86px }
+      .footer-item.center .footer-icon{ width:64px;height:64px }
+    }
+
+  </style>
 </head>
 <body>
+  <!-- Canvas layer for meteor animation -->
+  <canvas id="meteorCanvas" style="position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:60"></canvas>
 
-    <!-- شیشه‌ای بالای صفحه -->
-    <div class="glass-header">
-        <!-- آیکون پروفایل (آیکون آدمک) -->
-        <div class="profile-icon">
-            <img src="https://cdn.imgurl.ir/uploads/o064863_IMG_20251018_095031_589.jpg" alt="پروفایل" class="profile-img">
-        </div>
-        <!-- لوگو فروشگاه -->
-        <div class="logo">
-            <img src="https://cdn.imgurl.ir/uploads/o064863_IMG_20251018_095031_589.jpg" alt="لوگو فروشگاه">
-        </div>
-        <!-- آیکون همبرگر (منو) -->
-        <div class="menu-icon" onclick="toggleMenu()">
-            &#9776; <!-- آیکون همبرگر -->
-        </div>
+  <header>
+    <div class="header-right">
+      <div class="menu-btn material-icons-round" title="منو">menu</div>
     </div>
 
-    <!-- منوی کشویی -->
-    <div id="menu" class="side-menu">
-        <ul>
-            <li><a href="#">خانه</a></li>
-            <li><a href="#">دسته‌بندی‌ها</a></li>
-            <li><a href="#">پیشنهادات ویژه</a></li>
-            <li><a href="#">تماس با ما</a></li>
-        </ul>
+    <div class="logo-wrap" aria-hidden="false">
+      <!-- لوگوی شاپ شما (لینک ارسالی) -->
+      <img src="https://cdn.imgurl.ir/uploads/q72397_IMG_20251018_095031_589.jpg" alt="گادتوشاپ" class="logo-img">
     </div>
 
-    <!-- محتوای دیگر سایت -->
-    <header>
-        <div class="logo">فروشگاه آنلاین</div>
-        <!-- ادامه محتوای سایت -->
-    </header>
+    <div class="header-left">
+      <div class="login-text">ورود</div>
+    </div>
+  </header>
 
-    <!-- پاورقی -->
-    <footer>
-        <p>تمامی حقوق محفوظ است &copy; 2025</p>
-    </footer>
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div class="glass-panel" id="glassPanel" aria-label="پنل اصلی">
+          <h1>گادتوشاپ — فروشگاه دیجیتال</h1>
+          <p>همین حالا آماده شو، به‌زودی فروشگاه کامل راه‌اندازی می‌شود. این فضای شیشه‌ای هنگام اسکرول همراهت می‌ماند.</p>
 
-    <script>
-        // تغییر وضعیت منوی کشویی
-        function toggleMenu() {
-            const menu = document.getElementById("menu");
-            menu.classList.toggle("open");
+          <div class="search-row">
+            <input type="search" placeholder="جستجوی محصول، بازی یا گیفت‌کارت...">
+            <button class="btn">جستجو</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- محتوای نمونه تا امکان اسکرول وجود داشته باشه -->
+      <div class="spacer"></div>
+    </div>
+
+    <!-- ===== Services Section (after content) ===== -->
+    <section class="services-section" aria-label="خدمات">
+      <div class="services-inner">
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="https://cdn.imgurl.ir/uploads/a14022_icon1-150x150_1.png" alt="شارژ فوری">
+            </div>
+            <div class="service-title">شارژ فوری</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="https://cdn.imgurl.ir/uploads/k410752_icon2-150x150_1.png" alt="شارژ ۲۴ ساعته">
+            </div>
+            <div class="service-title">شارژ ۲۴ ساعته</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="https://cdn.imgurl.ir/uploads/c261846_icon3-150x150_1.png" alt="پرداخت ایمن">
+            </div>
+            <div class="service-title">پرداخت ایمن</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="https://cdn.imgurl.ir/uploads/l98463_icon4-150x150_1.png" alt="پنل کاربری">
+            </div>
+            <div class="service-title">پنل کاربری</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="https://cdn.imgurl.ir/uploads/p979093_icon5-150x150_1.png" alt="ضمانت قیمت">
+            </div>
+            <div class="service-title">ضمانت قیمت</div>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <img src="https://cdn.imgurl.ir/uploads/p5068_icon6-150x150_1.png" alt="قدمت از ۱۴۰۳/۵/۲۳">
+            </div>
+            <div class="service-title">قدمت از ۱۴۰۳/۵/۲۳</div>
+          </div>
+        </div>
+
+        <div class="enamad-wrap">
+          <img src="https://cdn.imgurl.ir/uploads/f940858_enamad.webp" alt="eNamad">
+        </div>
+
+        <div class="legal-text">
+          تمامی کالا ها و خدمات این فروشگاه ، حسب مورد دارای مجوز های لازم از مراجع مربوطه می باشند و فعالیت های این سایت تابع قوانین و مقررات جمهوری اسلامی ایران است.<br>
+          کليه حقوق اين سایت متعلق به گادتوشاپ میباشد.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer navigation (fixed) -->
+  <footer>
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">home</div>
+      <div>خانه</div>
+    </div>
+
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">person</div>
+      <div>ورود</div>
+    </div>
+
+    <div class="footer-item center" role="button" aria-label="سبد خرید">
+      <div class="footer-icon material-icons-round" aria-hidden="true">shopping_bag</div>
+      <span>سبد</span>
+    </div>
+
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">apps</div>
+      <div>اپ</div>
+    </div>
+
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">support_agent</div>
+      <div>پشتیبانی</div>
+    </div>
+  </footer>
+
+  <script>
+    /* -------------------------
+       Meteor animation (Canvas)
+       - meteors fall from top
+       - when hit "ground" (y >= groundY) they spawn particles and reset
+       ------------------------- */
+
+    const canvas = document.getElementById('meteorCanvas');
+    const ctx = canvas.getContext('2d');
+    let DPR = window.devicePixelRatio || 1;
+
+    function resize() {
+      DPR = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(window.innerWidth * DPR);
+      canvas.height = Math.floor(window.innerHeight * DPR);
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // ground level where meteors "hit"
+    function getGroundY() {
+      // place ground a bit above the footer; compute visible viewport
+      return window.innerHeight - 140; // footer height ~94, plus margin
+    }
+
+    class Meteor {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * (window.innerWidth + 200) - 100; // allow off-edge spawn
+        this.y = -Math.random() * 400 - 20;
+        this.len = Math.random() * 18 + 6;
+        this.size = Math.random() * 2 + 1;
+        this.speedY = Math.random() * 3 + 2.5;
+        this.angle = Math.PI / 2 + (Math.random() * 0.6 - 0.3);
+        this.vx = Math.cos(this.angle) * (Math.random()*1.8 + 0.8);
+        this.vy = Math.sin(this.angle) * this.speedY;
+        this.opacity = Math.random() * 0.6 + 0.6;
+        this.color = `rgba(0,210,255,${this.opacity})`;
+        this.trail = []; // store previous positions for a tail
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.02; // gravity feel
+        // push to trail
+        this.trail.push({x:this.x, y:this.y});
+        if (this.trail.length > 10) this.trail.shift();
+        // hit ground
+        if (this.y >= getGroundY()) {
+          spawnParticles(this.x, getGroundY(), this.color);
+          this.reset();
         }
-    </script>
+        // out of screen (side), reset
+        if (this.x < -200 || this.x > window.innerWidth + 200) this.reset();
+      }
+      draw() {
+        // draw tail
+        for (let i=0;i<this.trail.length;i++){
+          const t = this.trail[i];
+          const alpha = i / this.trail.length * this.opacity * 0.8;
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(0,210,255,${alpha})`;
+          ctx.arc(t.x, t.y, this.size*(i/6 + 0.3), 0, Math.PI*2);
+          ctx.fill();
+        }
+        // draw head
+        ctx.beginPath();
+        ctx.fillStyle = this.color;
+        ctx.shadowColor = '#00d4ff';
+        ctx.shadowBlur = 14;
+        ctx.arc(this.x, this.y, this.size+1.2, 0, Math.PI*2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
 
+    class Particle {
+      constructor(x,y,color){
+        this.x = x; this.y = y;
+        const speed = Math.random()*4 + 1;
+        const ang = Math.random()*Math.PI*2;
+        this.vx = Math.cos(ang)*speed;
+        this.vy = Math.sin(ang)*speed;
+        this.life = Math.random()*50 + 30;
+        this.size = Math.random()*2 + 0.6;
+        this.color = color;
+      }
+      update(){
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.06; // gravity
+        this.life--;
+      }
+      draw(){
+        const alpha = Math.max(this.life/70, 0);
+        ctx.beginPath();
+        ctx.fillStyle = this.color.replace(/,[^,]+\)$/, `,${alpha})`);
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI*2);
+        ctx.fill();
+      }
+    }
+
+    let meteors = [];
+    let particles = [];
+    for (let i=0;i<45;i++) meteors.push(new Meteor());
+
+    function spawnParticles(x,y,color){
+      const count = Math.floor(Math.random()*18 + 14);
+      for (let i=0;i<count;i++){
+        particles.push(new Particle(x + (Math.random()*20-10), y + (Math.random()*6-3), color));
+      }
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      // meteors
+      meteors.forEach(m=>{
+        m.update();
+        m.draw();
+      });
+      // particles
+      for (let i = particles.length-1; i>=0; i--){
+        const p = particles[i];
+        p.update();
+        p.draw();
+        if (p.life <= 0 || p.y > window.innerHeight + 50) particles.splice(i,1);
+      }
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    /* ---------- Small UI niceties (optional) ---------- */
+    // Make menu button interactive (demo)
+    document.querySelector('.menu-btn').addEventListener('click', ()=> {
+      alert('اینجا منو باز می‌شود (نمونه).');
+    });
+
+    // If logo path missing, fallback to text
+    document.querySelector('.logo-img').addEventListener('error', function(){
+      this.style.display = 'none';
+      const wrapper = document.querySelector('.logo-wrap');
+      wrapper.innerHTML = '<div style="width:66px;height:66px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#021017">گت</div>';
+    });
+
+    // Keep canvas sized on initial load
+    window.addEventListener('load', resize);
+  </script>
 </body>
 </html>
