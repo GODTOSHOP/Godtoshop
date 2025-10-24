@@ -3,103 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منوی اندیکارتور</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: #f4f4f4;
-        }
-
-        .container {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .menu {
-            background-color: #333;
-            border-radius: 8px;
-            padding: 10px;
-            display: flex;
-            position: relative;
-            width: 100%;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .menu ul {
-            display: flex;
-            list-style: none;
-        }
-
-        .menu-item {
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 18px;
-            position: relative;
-            transition: color 0.3s;
-        }
-
-        .menu-item:hover {
-            color: #00ff99;
-        }
-
-        .menu-item.active {
-            color: #00ff99;
-        }
-
-        .indicator {
-            position: absolute;
-            bottom: 0;
-            width: 25%;
-            height: 4px;
-            background-color: #00ff99;
-            border-radius: 2px;
-            transition: left 0.3s ease;
-        }
-    </style>
+    <title>فروشگاه آنلاین</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <nav class="menu">
+    <!-- هدر -->
+    <header>
+        <div class="logo">فروشگاه آنلاین</div>
+        <nav>
             <ul>
-                <li><a href="#" class="menu-item active">خانه</a></li>
-                <li><a href="#" class="menu-item">درباره ما</a></li>
-                <li><a href="#" class="menu-item">خدمات</a></li>
-                <li><a href="#" class="menu-item">تماس با ما</a></li>
+                <li><a href="#">خانه</a></li>
+                <li><a href="#">دسته‌بندی‌ها</a></li>
+                <li><a href="#">پیشنهادات ویژه</a></li>
+                <li><a href="#">تماس با ما</a></li>
             </ul>
-            <div class="indicator"></div>
         </nav>
-    </div>
+        <div class="search">
+            <input type="text" placeholder="جستجو...">
+            <button>جستجو</button>
+        </div>
+        <div class="cart">
+            <span>سبد خرید (0)</span>
+        </div>
+    </header>
 
-    <script>
-        const menuItems = document.querySelectorAll('.menu-item');
-        const indicator = document.querySelector('.indicator');
+    <!-- اسلایدر -->
+    <section class="slider">
+        <h2>تخفیف‌های ویژه این هفته!</h2>
+        <div class="slider-images">
+            <img src="https://via.placeholder.com/1200x400" alt="تخفیف‌ها">
+        </div>
+    </section>
 
-        menuItems.forEach((item, index) => {
-            item.addEventListener('click', () => {
-                // Remove active class from all menu items
-                menuItems.forEach(item => item.classList.remove('active'));
-                
-                // Add active class to clicked menu item
-                item.classList.add('active');
+    <!-- بخش محصولات -->
+    <section class="products">
+        <h2>محصولات پرفروش</h2>
+        <div class="product-list">
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="محصول 1">
+                <p>محصول 1</p>
+                <span>150,000 تومان</span>
+                <button>افزودن به سبد خرید</button>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200" alt="محصول 2">
+                <p>محصول 2</p>
+                <span>250,000 تومان</span>
+                <button>افزودن به سبد خرید</button>
+            </div>
+            <!-- محصولات بیشتر... -->
+        </div>
+    </section>
 
-                // Move indicator to clicked menu item
-                const width = item.offsetWidth;
-                const left = item.offsetLeft;
-                
-                indicator.style.width = `${width}px`;
-                indicator.style.left = `${left}px`;
-            });
-        });
-    </script>
+    <!-- پاورقی -->
+    <footer>
+        <p>تمامی حقوق محفوظ است &copy; 2025</p>
+        <div class="footer-links">
+            <a href="#">شرایط و قوانین</a>
+            <a href="#">سیاست‌های حریم خصوصی</a>
+            <a href="#">تماس با ما</a>
+        </div>
+    </footer>
 </body>
 </html>
