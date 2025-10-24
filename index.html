@@ -22,7 +22,6 @@
       --accent1: #00d4ff;
       --accent2: #00ffa3;
       --blur: 14px;
-      --shadow-accent: rgba(0,212,255,0.12);
       --font: 'Vazirmatn', sans-serif;
     }
 
@@ -44,10 +43,13 @@
     .login-text{ font-weight:600; color:var(--text); padding:8px 10px; border-radius:10px; background:transparent; cursor:pointer; }
     .logo-wrap{ display:flex; align-items:center; justify-content:center; position:absolute; left:50%; transform:translateX(-50%); }
 
-    .logo-img{
-      width:66px; height:66px; border-radius:14px; object-fit:contain;
-      box-shadow:0 6px 26px var(--shadow-accent); background:linear-gradient(135deg,var(--accent1),var(--accent2));
-      display:block; padding:8px;
+    /* لوگو ساده بدون gradient و shadow */
+    .logo-img {
+      width:66px;
+      height:66px;
+      border-radius:14px;
+      object-fit:contain;
+      display:block;
     }
 
     main{ padding-top:110px; padding-bottom:220px; min-height:100vh; }
@@ -129,7 +131,7 @@
     }
     .service-title{ color:#f8fbff; font-weight:700; font-size:14px; text-align:center }
 
-    /* Enamad */
+    /* ای‌نماد */
     .enamad-wrap{ margin-top:6px; display:flex; align-items:center; justify-content:center; width:100% }
 
     /* Legal text */
@@ -215,35 +217,54 @@
           <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/p5068_icon6-150x150_1.png"></div><div class="service-title">قدمت از ۱۴۰۳/۵/۲۳</div></div>
         </div>
 
-        <!-- ای‌نماد اصلی و اصلاح‌شده -->
         <div class="enamad-wrap">
-          <div id="enamad">
-            <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=643657&amp;Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
-              <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=643657&amp;Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="enamad" style="cursor:pointer" id="pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
-            </a>
-          </div>
+          <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
+            <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="" style="cursor:pointer" code="pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
+          </a>
         </div>
 
         <div class="legal-text">
-          تمامی کالا ها و خدمات این فروشگاه ، حسب مورد دارای مجوز های لازم از مراجع مربوطه می باشند و فعالیت های این سایت تابع قوانین و مقررات جمهوری اسلامی ایران است.<br>
+          تمامی کالا ها و خدمات این فروشگاه، حسب مورد دارای مجوز های لازم از مراجع مربوطه می باشند و فعالیت های این سایت تابع قوانین و مقررات جمهوری اسلامی ایران است.<br>
           کلیه حقوق این سایت متعلق به گادتوشاپ می‌باشد.
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
-    <div class="footer-item"><div class="footer-icon material-icons-round">home</div><div>خانه</div></div>
-    <div class="footer-item"><div class="footer-icon material-icons-round">person</div><div>ورود</div></div>
-    <div class="footer-item center"><div class="footer-icon material-icons-round">shopping_bag</div><span>سبد</span></div>
-    <div class="footer-item"><div class="footer-icon material-icons-round">apps</div><div>اپ</div></div>
-    <div class="footer-item"><div class="footer-icon material-icons-round">support_agent</div><div>پشتیبانی</div></div>
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">home</div>
+      <div>خانه</div>
+    </div>
+
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">person</div>
+      <div>ورود</div>
+    </div>
+
+    <div class="footer-item center" role="button" aria-label="سبد خرید">
+      <div class="footer-icon material-icons-round" aria-hidden="true">shopping_bag</div>
+      <span>سبد</span>
+    </div>
+
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">apps</div>
+      <div>اپ</div>
+    </div>
+
+    <div class="footer-item">
+      <div class="footer-icon material-icons-round" aria-hidden="true">support_agent</div>
+      <div>پشتیبانی</div>
+    </div>
   </footer>
 
   <script>
-    document.querySelector('.menu-btn').addEventListener('click', () => {
+    // دکمه منو نمونه
+    document.querySelector('.menu-btn').addEventListener('click', ()=> {
       alert('اینجا منو باز می‌شود (نمونه).');
     });
   </script>
+
 </body>
 </html>
