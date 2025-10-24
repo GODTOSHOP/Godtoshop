@@ -1,275 +1,197 @@
-<!DOCTYPE html>
-<html lang="fa">
+<!doctype html>
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>گادتوشاپ</title>
-    <style>
-        /* تعریف رنگ‌ها و سایه‌ها */
-        :root {
-            --primary-color: #3a88e8; /* رنگ آبی اصلی */
-            --secondary-color: #ffffff; /* رنگ سفید */
-            --shadow-color: rgba(0, 0, 0, 0.1); /* رنگ سایه */
-            --text-color: #f0f0f0; /* رنگ متن سفید */
-            --hover-color: #2b68d8; /* رنگ تغییر بر روی هاور */
-            --background-color: #181818; /* رنگ پس‌زمینه سیاه */
-        }
 
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--text-color);
-            overflow-x: hidden;
+            background-color: #121212;
+            color: white;
         }
 
-        /* صفحه شیشه‌ای بالایی */
-        .top-bar {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            padding: 20px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* هدر شیشه‌ای */
+        header {
             position: fixed;
-            width: 100%;
             top: 0;
             left: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px var(--shadow-color);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .top-bar .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: var(--primary-color);
-            transition: color 0.3s ease;
-        }
-
-        .top-bar .logo:hover {
-            color: var(--hover-color);
-        }
-
-        .top-bar .profile {
-            text-align: right;
-            color: var(--text-color);
-        }
-
-        .top-bar .profile h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        .top-bar .profile p {
-            margin: 0;
-            font-size: 16px;
-            color: #bbb;
-        }
-
-        .top-bar .menu-icon {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            color: var(--primary-color);
-            font-size: 18px;
-        }
-
-        .top-bar .menu-icon:hover {
-            color: var(--hover-color);
-        }
-
-        /* صفحه شیشه‌ای پایین */
-        .bottom-bar {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            padding: 15px;
-            position: fixed;
-            bottom: 0;
             width: 100%;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
-            box-shadow: 0 4px 6px var(--shadow-color);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 10;
         }
 
-        .bottom-bar .status {
-            font-size: 18px;
-            font-weight: 500;
-            color: var(--text-color);
+        header .profile {
+            text-align: right;
         }
 
-        .bottom-bar .date {
+        header .profile h1 {
+            margin: 0;
+        }
+
+        header .profile p {
+            margin: 0;
             font-size: 14px;
-            font-weight: 300;
-            color: #888;
-            margin-left: 15px;
         }
 
-        /* جعبه جستجو */
+        header .menu-icon {
+            cursor: pointer;
+            font-size: 30px;
+        }
+
+        /* نوار جستجو */
         .search-bar {
-            margin-top: 120px;
-            padding: 15px;
-            background-color: #333;
-            box-shadow: 0px 6px 15px var(--shadow-color);
-            margin: 30px;
-            border-radius: 8px;
-            transition: all 0.3s ease-in-out;
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            width: 50%;
         }
 
         .search-bar input {
             width: 100%;
-            padding: 15px;
-            border: 1px solid #444;
-            border-radius: 8px;
+            padding: 10px;
+            border: none;
+            border-radius: 30px;
+            background-color: transparent;
+            color: white;
             font-size: 16px;
-            outline: none;
-            background-color: #222;
-            color: #fff;
-            transition: border-color 0.3s ease;
         }
 
-        .search-bar input:focus {
-            border-color: var(--primary-color);
-        }
-
-        /* تامنیل‌ها */
-        .thumbnails {
-            display: flex;
-            overflow-x: auto;
-            padding: 30px;
-            background-color: #333;
-            box-shadow: 0px 4px 12px var(--shadow-color);
-        }
-
-        .thumbnail {
-            width: 120px;
-            height: 120px;
-            margin-right: 20px;
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .thumbnail:hover {
-            transform: scale(1.1);
-        }
-
-        /* فوتر */
-        .footer {
-            display: flex;
-            justify-content: space-between;
-            padding: 30px;
-            background-color: var(--primary-color);
-            color: #fff;
+        /* فوتر شیشه‌ای */
+        footer {
             position: fixed;
             bottom: 0;
+            left: 0;
             width: 100%;
-            z-index: 50;
-            box-shadow: 0 -4px 12px var(--shadow-color);
-        }
-
-        .footer div {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .footer .icon {
-            width: 45px;
-            height: 45px;
-            background-color: #fff;
-            color: var(--primary-color);
-            border-radius: 50%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 8px var(--shadow-color);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
         }
 
-        .footer .icon:hover {
-            background-color: var(--hover-color);
+        footer .date {
+            font-size: 14px;
         }
 
-        /* انیمیشن لوگو پس‌زمینه */
-        .logo-background {
-            position: absolute;
+        /* بخش Thumbnail ها */
+        .thumbnails {
+            margin-top: 150px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .thumbnail {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .thumbnail:hover img {
+            transform: scale(1.1);
+        }
+
+        /* بخش منو */
+        .menu {
+            position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('shop-logo.png') no-repeat center center;
-            background-size: cover;
-            animation: slideBackground 15s linear infinite;
+            width: 250px;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 20;
+            display: none;
+            flex-direction: column;
+            padding: 20px;
         }
 
-        @keyframes slideBackground {
-            0% { transform: translateX(0); }
-            50% { transform: translateX(-100%); }
-            100% { transform: translateX(0); }
+        .menu.active {
+            display: flex;
         }
+
+        .menu a {
+            color: white;
+            margin: 20px 0;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- بالای صفحه -->
-    <div class="top-bar">
-        <div class="logo">گادتوشاپ</div>
+    <!-- هدر شیشه‌ای -->
+    <header>
         <div class="profile">
             <h1>گادتوشاپ</h1>
             <p>خرید راحت را با گادتوشاپ تجربه کنید</p>
         </div>
-        <div class="menu-icon">
-            <div class="icon">&#9776;</div>
-            <span>حساب کاربری</span>
-        </div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <!-- منوی کشویی -->
+    <div class="menu" id="menu">
+        <a href="#">گادتوشاپ</a>
+        <a href="#">حساب کاربری</a>
+        <a href="#">سبد خرید</a>
+        <a href="#">خدمات و یا محصولات</a>
+        <a href="#">پشتیبانی</a>
     </div>
 
-    <!-- صفحه شیشه‌ای پس‌زمینه -->
-    <div class="logo-background"></div>
-
-    <!-- جستجو -->
+    <!-- نوار جستجو -->
     <div class="search-bar">
         <input type="text" placeholder="جستجو کنید...">
     </div>
 
-    <!-- تامنیل‌ها -->
+    <!-- تصاویر Thumbnail -->
     <div class="thumbnails">
-        <div class="thumbnail" style="background-image: url('image1.jpg');" onclick="window.location.href='page1.html';"></div>
-        <div class="thumbnail" style="background-image: url('image2.jpg');" onclick="window.location.href='page2.html';"></div>
-        <div class="thumbnail" style="background-image: url('image3.jpg');" onclick="window.location.href='page3.html';"></div>
+        <div class="thumbnail">
+            <img src="image1.jpg" alt="Image 1">
+        </div>
+        <div class="thumbnail">
+            <img src="image2.jpg" alt="Image 2">
+        </div>
+        <div class="thumbnail">
+            <img src="image3.jpg" alt="Image 3">
+        </div>
+        <div class="thumbnail">
+            <img src="image4.jpg" alt="Image 4">
+        </div>
     </div>
 
-    <!-- پایین صفحه -->
-    <div class="bottom-bar">
-        <div class="status">در حال شارژ سفارشات</div>
-        <div class="date" id="date"></div>
-    </div>
-
-    <!-- فوتر -->
-    <div class="footer">
-        <div>گادتوشاپ</div>
-        <div>حساب کاربری</div>
-        <div class="icon">🛒</div>
-        <div>خدمات</div>
-        <div>پشتیبانی</div>
-    </div>
+    <!-- فوتر شیشه‌ای -->
+    <footer>
+        <div class="date">در حال شارژ سفارشات | ۱ آبان</div>
+    </footer>
 
     <script>
-        // نمایش تاریخ
-        const dateElement = document.getElementById('date');
-        const today = new Date();
-        const months = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"];
-        const day = today.getDate();
-        const month = months[today.getMonth()];
-        dateElement.innerText = `${day} ${month}`;
+        // فعال کردن منو
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
     </script>
+
 </body>
 </html>
