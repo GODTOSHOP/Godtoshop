@@ -4,65 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فروشگاه آنلاین</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* تنظیمات عمومی */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            direction: rtl;
+            background-color: #121212; /* تم تیره */
+            color: white; /* متن سفید */
+        }
+
+        /* صفحه شیشه‌ای بالای صفحه */
+        .glass-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.1); /* شیشه‌ای */
+            backdrop-filter: blur(10px); /* افکت بلور */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* آیکون آدمک (پروفایل) */
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-icon .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* لوگو فروشگاه */
+        .glass-header .logo img {
+            width: 50px;
+            height: auto;
+        }
+
+        /* آیکون همبرگر */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            color: white; /* رنگ سفید برای آیکون */
+        }
+
+        /* منوی کشویی */
+        .side-menu {
+            position: fixed;
+            top: 0;
+            right: -250px; /* مخفی بودن در ابتدا */
+            width: 250px;
+            height: 100%;
+            background-color: #333; /* پس‌زمینه تیره برای منو */
+            color: white;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+            transition: right 0.3s ease;
+            padding-top: 60px;
+        }
+
+        .side-menu ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .side-menu ul li {
+            margin: 20px 0;
+            text-align: right;
+        }
+
+        .side-menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 20px;
+            display: block;
+        }
+
+        /* منوی باز شده */
+        .side-menu.open {
+            right: 0;
+        }
+
+        /* پاورقی */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        footer .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer .footer-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <!-- هدر -->
+
+    <!-- شیشه‌ای بالای صفحه -->
+    <div class="glass-header">
+        <!-- آیکون پروفایل (آیکون آدمک) -->
+        <div class="profile-icon">
+            <img src="https://cdn.imgurl.ir/uploads/o064863_IMG_20251018_095031_589.jpg" alt="پروفایل" class="profile-img">
+        </div>
+        <!-- لوگو فروشگاه -->
+        <div class="logo">
+            <img src="https://cdn.imgurl.ir/uploads/o064863_IMG_20251018_095031_589.jpg" alt="لوگو فروشگاه">
+        </div>
+        <!-- آیکون همبرگر (منو) -->
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776; <!-- آیکون همبرگر -->
+        </div>
+    </div>
+
+    <!-- منوی کشویی -->
+    <div id="menu" class="side-menu">
+        <ul>
+            <li><a href="#">خانه</a></li>
+            <li><a href="#">دسته‌بندی‌ها</a></li>
+            <li><a href="#">پیشنهادات ویژه</a></li>
+            <li><a href="#">تماس با ما</a></li>
+        </ul>
+    </div>
+
+    <!-- محتوای دیگر سایت -->
     <header>
         <div class="logo">فروشگاه آنلاین</div>
-        <nav>
-            <ul>
-                <li><a href="#">خانه</a></li>
-                <li><a href="#">دسته‌بندی‌ها</a></li>
-                <li><a href="#">پیشنهادات ویژه</a></li>
-                <li><a href="#">تماس با ما</a></li>
-            </ul>
-        </nav>
-        <div class="search">
-            <input type="text" placeholder="جستجو...">
-            <button>جستجو</button>
-        </div>
-        <div class="cart">
-            <span>سبد خرید (0)</span>
-        </div>
+        <!-- ادامه محتوای سایت -->
     </header>
-
-    <!-- اسلایدر -->
-    <section class="slider">
-        <h2>تخفیف‌های ویژه این هفته!</h2>
-        <div class="slider-images">
-            <img src="https://via.placeholder.com/1200x400" alt="تخفیف‌ها">
-        </div>
-    </section>
-
-    <!-- بخش محصولات -->
-    <section class="products">
-        <h2>محصولات پرفروش</h2>
-        <div class="product-list">
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="محصول 1">
-                <p>محصول 1</p>
-                <span>150,000 تومان</span>
-                <button>افزودن به سبد خرید</button>
-            </div>
-            <div class="product">
-                <img src="https://via.placeholder.com/200" alt="محصول 2">
-                <p>محصول 2</p>
-                <span>250,000 تومان</span>
-                <button>افزودن به سبد خرید</button>
-            </div>
-            <!-- محصولات بیشتر... -->
-        </div>
-    </section>
 
     <!-- پاورقی -->
     <footer>
         <p>تمامی حقوق محفوظ است &copy; 2025</p>
-        <div class="footer-links">
-            <a href="#">شرایط و قوانین</a>
-            <a href="#">سیاست‌های حریم خصوصی</a>
-            <a href="#">تماس با ما</a>
-        </div>
     </footer>
+
+    <script>
+        // تغییر وضعیت منوی کشویی
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            menu.classList.toggle("open");
+        }
+    </script>
+
 </body>
 </html>
