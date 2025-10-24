@@ -1,131 +1,192 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>گادتوشاپ</title>
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f0f0f0;
         }
-        /* Header */
-        .header {
+
+        /* صفحه شیشه‌ای بالایی */
+        .top-bar {
             background: rgba(255, 255, 255, 0.8);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            padding: 10px;
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 100;
         }
-        .header .logo {
-            font-size: 20px;
+
+        .top-bar .logo {
+            font-size: 24px;
             font-weight: bold;
+            color: #333;
         }
-        .header .search-bar {
-            width: 200px;
-            padding: 5px;
-            margin-left: 20px;
+
+        .top-bar .profile {
+            text-align: right;
         }
-        .menu-icon {
+
+        .top-bar .profile h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .top-bar .profile p {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .top-bar .menu-icon {
+            display: flex;
+            align-items: center;
             cursor: pointer;
         }
-        .menu-content {
-            display: none;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 15px;
-            z-index: 200;
-        }
 
-        /* Footer */
-        .footer {
-            background-color: #2c3e50;
-            color: white;
-            display: flex;
-            justify-content: space-around;
-            padding: 20px 0;
-        }
-        .footer div {
-            text-align: center;
-            font-size: 16px;
-        }
-        .footer i {
-            font-size: 24px;
-            margin-bottom: 5px;
-        }
-        .footer .cart-icon {
-            border-radius: 50%;
-            background-color: #e74c3c;
-            padding: 10px;
-            font-size: 16px;
-        }
-
-        /* Menu content */
-        .menu-content p {
+        .top-bar .menu-icon span {
             font-size: 18px;
+            margin-left: 8px;
         }
 
+        /* صفحه شیشه‌ای پایین */
+        .bottom-bar {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .bottom-bar .status {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .bottom-bar .date {
+            font-size: 14px;
+            color: #777;
+            margin-left: 10px;
+        }
+
+        /* جعبه جستجو */
+        .search-bar {
+            margin-top: 100px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        /* تامنیل‌ها */
+        .thumbnails {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            margin-right: 15px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* بخش‌های پایین صفحه */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .footer div {
+            display: flex;
+            align-items: center;
+        }
+
+        .footer div.icon {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            margin-left: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <div class="header">
-        <div class="logo">
-            گادتوشاپ
+    <!-- بالای صفحه -->
+    <div class="top-bar">
+        <div class="logo">گادتوشاپ</div>
+        <div class="profile">
+            <h1>گادتوشاپ</h1>
             <p>خرید راحت را با گادتوشاپ تجربه کنید</p>
         </div>
-        <input type="text" class="search-bar" placeholder="جستجو ...">
-        <div class="menu-icon" onclick="toggleMenu()">☰ حساب کاربری</div>
+        <div class="menu-icon">
+            <div class="icon">&#9776;</div>
+            <span>حساب کاربری</span>
+        </div>
     </div>
 
-    <!-- Menu -->
-    <div class="menu-content" id="menuContent">
-        <p>صفحه شیشه‌ای تار با لوگوی در حال تکان خوردن</p>
-        <!-- Links for menu -->
+    <!-- جستجو -->
+    <div class="search-bar">
+        <input type="text" placeholder="جستجو کنید..." style="width: 100%; padding: 10px; border-radius: 5px;">
     </div>
 
-    <!-- Footer -->
+    <!-- تامنیل‌ها -->
+    <div class="thumbnails">
+        <div class="thumbnail" style="background-image: url('image1.jpg');" onclick="window.location.href='page1.html';"></div>
+        <div class="thumbnail" style="background-image: url('image2.jpg');" onclick="window.location.href='page2.html';"></div>
+        <div class="thumbnail" style="background-image: url('image3.jpg');" onclick="window.location.href='page3.html';"></div>
+    </div>
+
+    <!-- پایین صفحه -->
+    <div class="bottom-bar">
+        <div class="status">در حال شارژ سفارشات</div>
+        <div class="date" id="date"></div>
+    </div>
+
+    <!-- بخش‌های پایین صفحه -->
     <div class="footer">
-        <div>
-            <i class="material-icons">storefront</i>
-            <p>گادتوشاپ</p>
-        </div>
-        <div>
-            <i class="material-icons">account_circle</i>
-            <p>حساب کاربری</p>
-        </div>
-        <div class="cart-icon">
-            <i class="material-icons">shopping_cart</i>
-        </div>
-        <div>
-            <i class="material-icons">local_offer</i>
-            <p>خدمات و محصولات</p>
-        </div>
-        <div>
-            <i class="material-icons">help_outline</i>
-            <p>پشتیبانی</p>
-        </div>
+        <div>گادتوشاپ</div>
+        <div>حساب کاربری</div>
+        <div class="icon">🛒</div>
+        <div>خدمات</div>
+        <div>پشتیبانی</div>
     </div>
 
     <script>
-        function toggleMenu() {
-            let menu = document.getElementById('menuContent');
-            menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
-        }
+        // نمایش تاریخ
+        const dateElement = document.getElementById('date');
+        const today = new Date();
+        const months = ["فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور", "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"];
+        const day = today.getDate();
+        const month = months[today.getMonth()];
+        dateElement.innerText = `${day} ${month}`;
     </script>
 </body>
 </html>
