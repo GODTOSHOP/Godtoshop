@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>گادتوشاپ</title>
 
-    <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         body {
@@ -29,6 +28,11 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             z-index: 10;
+            transition: background 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.2);
         }
 
         header .profile {
@@ -49,93 +53,20 @@
             font-size: 30px;
         }
 
-        /* نوار جستجو */
-        .search-bar {
-            position: fixed;
-            top: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            width: 50%;
+        /* لوگو */
+        .logo {
+            width: 50px;
+            height: auto;
         }
 
-        .search-bar input {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 30px;
-            background-color: transparent;
-            color: white;
-            font-size: 16px;
+        /* جاوا اسکریپت برای اسکرول */
+        .scrolled {
+            background-color: rgba(0, 0, 0, 0.6); /* تغییر پس‌زمینه بعد از اسکرول */
         }
 
-        /* فوتر شیشه‌ای */
-        footer {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        footer .date {
-            font-size: 14px;
-        }
-
-        /* بخش Thumbnail ها */
-        .thumbnails {
-            margin-top: 150px;
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .thumbnail {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-        }
-
-        .thumbnail img {
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-
-        .thumbnail:hover img {
-            transform: scale(1.1);
-        }
-
-        /* بخش منو */
-        .menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 250px;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 20;
-            display: none;
-            flex-direction: column;
-            padding: 20px;
-        }
-
-        .menu.active {
-            display: flex;
-        }
-
-        .menu a {
-            color: white;
-            margin: 20px 0;
-            text-decoration: none;
-            font-size: 18px;
+        /* تنظیمات برای اینکه منو در سمت چپ باشد */
+        .menu-icon {
+            font-size: 36px;
         }
 
     </style>
@@ -143,54 +74,25 @@
 <body>
 
     <!-- هدر شیشه‌ای -->
-    <header>
+    <header id="header">
         <div class="profile">
+            <img src="https://cdn.imgurl.ir/uploads/s782197_IMG_20251018_095031_589.jpg" alt="گادتوشاپ لوگو" class="logo">
             <h1>گادتوشاپ</h1>
             <p>خرید راحت را با گادتوشاپ تجربه کنید</p>
         </div>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </header>
 
-    <!-- منوی کشویی -->
-    <div class="menu" id="menu">
-        <a href="#">گادتوشاپ</a>
-        <a href="#">حساب کاربری</a>
-        <a href="#">سبد خرید</a>
-        <a href="#">خدمات و یا محصولات</a>
-        <a href="#">پشتیبانی</a>
-    </div>
-
-    <!-- نوار جستجو -->
-    <div class="search-bar">
-        <input type="text" placeholder="جستجو کنید...">
-    </div>
-
-    <!-- تصاویر Thumbnail -->
-    <div class="thumbnails">
-        <div class="thumbnail">
-            <img src="image1.jpg" alt="Image 1">
-        </div>
-        <div class="thumbnail">
-            <img src="image2.jpg" alt="Image 2">
-        </div>
-        <div class="thumbnail">
-            <img src="image3.jpg" alt="Image 3">
-        </div>
-        <div class="thumbnail">
-            <img src="image4.jpg" alt="Image 4">
-        </div>
-    </div>
-
-    <!-- فوتر شیشه‌ای -->
-    <footer>
-        <div class="date">در حال شارژ سفارشات | ۱ آبان</div>
-    </footer>
-
     <script>
-        // فعال کردن منو
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('active');
-        }
+        // اسکرول و تغییر پس‌زمینه هدر
+        window.addEventListener("scroll", function () {
+            const header = document.getElementById("header");
+            if (window.scrollY > 50) {
+                header.classList.add("scrolled");
+            } else {
+                header.classList.remove("scrolled");
+            }
+        });
     </script>
 
 </body>
