@@ -8,7 +8,7 @@
   <!-- فونت فارسی Vazirmatn -->
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
 
-  <!-- آیکون‌های متریال -->
+  <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
   <style>
@@ -29,7 +29,7 @@
     html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
 
-    /* ---------- هدر ---------- */
+    /* ---------- Header ---------- */
     header{
       position:fixed;top:0;left:0;right:0;height:72px;
       display:flex;align-items:center;justify-content:space-between;padding:0 18px;
@@ -55,9 +55,55 @@
     main{ padding-top:110px; padding-bottom:220px; min-height:100vh; }
     .container{ max-width:1100px; margin:0 auto; padding:18px; }
 
-    .spacer{ height:900px; opacity:0.03 }
+    /* ---------- Services ---------- */
+    .services-section{
+      width:100%;
+      padding:28px 18px 80px;
+      display:flex;
+      justify-content:center;
+    }
+    .services-inner{
+      max-width:1100px;
+      width:100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid var(--glass-strong);
+      border-radius:16px;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:18px;
+      backdrop-filter: blur(10px);
+    }
+    .services-grid{
+      width:100%;
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:18px;
+    }
+    .service-card{
+      display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px;border-radius:12px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .service-card:hover{ transform:translateY(-8px); box-shadow:0 12px 36px rgba(0,0,0,0.6) }
+    .service-icon{
+      width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      background: rgba(255,255,255,0.02); padding:8px;
+    }
+    .service-icon img{
+      width:100%;height:100%;object-fit:contain;
+      filter: grayscale(1) sepia(1) hue-rotate(200deg) saturate(6) brightness(0.95);
+    }
+    .service-title{ color:#f8fbff; font-weight:700; font-size:14px; text-align:center }
 
-    /* ---------- فوتر ---------- */
+    /* ای‌نماد */
+    .enamad-wrap{ margin-top:6px; display:flex; align-items:center; justify-content:center; width:100% }
+
+    /* Legal text */
+    .legal-text{ margin-top:8px; color:var(--muted); font-size:13px; text-align:center; line-height:1.6; padding:0 8px }
+
+    /* ---------- Footer ---------- */
     footer{
       position:fixed; left:0; right:0; bottom:0; height:94px;
       display:flex; justify-content:space-around; align-items:center;
@@ -83,7 +129,11 @@
     }
     .footer-item.center span{ color:#fff; font-weight:700 }
 
+    @media (max-width:720px){
+      .services-grid{ grid-template-columns: repeat(2,1fr) }
+    }
     @media (max-width:420px){
+      .services-grid{ grid-template-columns: repeat(1,1fr) }
       footer{ height:86px }
       .footer-item.center .footer-icon{ width:64px;height:64px }
     }
@@ -97,7 +147,7 @@
     </div>
 
     <div class="logo-wrap">
-      <img src="https://cdn.imgurl.ir/uploads/k448808_file_00000000466c61f5ae40fc4bc2083f27.png" alt="گادتوشاپ" class="logo-img">
+      <img src="https://cdn.imgurl.ir/uploads/o064863_IMG_20251018_095031_589.jpg" alt="گادتوشاپ" class="logo-img">
     </div>
 
     <div class="header-left">
@@ -109,33 +159,38 @@
     <div class="container">
       <div class="spacer"></div>
     </div>
+
+    <section class="services-section">
+      <div class="services-inner">
+        <div class="services-grid">
+          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/a14022_icon1-150x150_1.png"></div><div class="service-title">شارژ فوری</div></div>
+          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/k410752_icon2-150x150_1.png"></div><div class="service-title">شارژ ۲۴ ساعته</div></div>
+          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/c261846_icon3-150x150_1.png"></div><div class="service-title">پرداخت ایمن</div></div>
+          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/l98463_icon4-150x150_1.png"></div><div class="service-title">پنل کاربری</div></div>
+          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/p979093_icon5-150x150_1.png"></div><div class="service-title">ضمانت قیمت</div></div>
+          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/p5068_icon6-150x150_1.png"></div><div class="service-title">قدمت از ۱۴۰۳/۵/۲۳</div></div>
+        </div>
+
+        <div class="enamad-wrap">
+          <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
+            <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="نماد اعتماد گادتوشاپ" style="cursor:pointer">
+          </a>
+        </div>
+
+        <div class="legal-text">
+          تمامی کالاها و خدمات این فروشگاه، حسب مورد دارای مجوزهای لازم از مراجع مربوطه می‌باشند و فعالیت‌های این سایت تابع قوانین و مقررات جمهوری اسلامی ایران است.<br>
+          کلیه حقوق این سایت متعلق به گادتوشاپ می‌باشد.
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <div class="footer-item">
-      <div class="footer-icon material-icons-round">home</div>
-      <div>خانه</div>
-    </div>
-
-    <div class="footer-item">
-      <div class="footer-icon material-icons-round">person</div>
-      <div>ورود</div>
-    </div>
-
-    <div class="footer-item center">
-      <div class="footer-icon material-icons-round">shopping_bag</div>
-      <span>سبد</span>
-    </div>
-
-    <div class="footer-item">
-      <div class="footer-icon material-icons-round">apps</div>
-      <div>اپ</div>
-    </div>
-
-    <div class="footer-item">
-      <div class="footer-icon material-icons-round">support_agent</div>
-      <div>پشتیبانی</div>
-    </div>
+    <div class="footer-item"><div class="footer-icon material-icons-round">home</div><div>خانه</div></div>
+    <div class="footer-item"><div class="footer-icon material-icons-round">person</div><div>ورود</div></div>
+    <div class="footer-item center"><div class="footer-icon material-icons-round">shopping_bag</div><span>سبد</span></div>
+    <div class="footer-item"><div class="footer-icon material-icons-round">apps</div><div>اپ</div></div>
+    <div class="footer-item"><div class="footer-icon material-icons-round">support_agent</div><div>پشتیبانی</div></div>
   </footer>
 
   <script>
