@@ -44,57 +44,40 @@
     .logo-wrap{ display:flex; align-items:center; justify-content:center; position:absolute; left:50%; transform:translateX(-50%); }
 
     /* لوگو */
-    .logo-img {
-      width:66px;
-      height:66px;
-      border-radius:14px;
-      object-fit:contain;
-      display:block;
-    }
+    .logo-img { width:66px; height:66px; border-radius:14px; object-fit:contain; display:block; }
 
     main{ padding-top:110px; padding-bottom:220px; min-height:100vh; }
     .container{ max-width:1100px; margin:0 auto; padding:18px; }
 
+    .spacer{ height:40px; }
+
     /* ---------- Services ---------- */
-    .services-section{
-      width:100%;
-      padding:28px 18px 80px;
-      display:flex;
-      justify-content:center;
-    }
+    .services-section{ width:100%; padding:28px 18px 80px; display:flex; justify-content:center; }
     .services-inner{
-      max-width:1100px;
-      width:100%;
+      max-width:1100px; width:100%;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid var(--glass-strong);
-      border-radius:16px;
-      padding:18px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:18px;
+      border-radius:16px; padding:18px;
+      display:flex; flex-direction:column; align-items:center; gap:18px;
       backdrop-filter: blur(10px);
     }
     .services-grid{
-      width:100%;
-      display:grid;
-      grid-template-columns: repeat(3,1fr);
-      gap:18px;
+      width:100%; display:grid;
+      grid-template-columns: repeat(3,1fr); gap:18px;
     }
     .service-card{
-      display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px;border-radius:12px;
+      display:flex; flex-direction:column; align-items:center; gap:10px;
+      padding:12px; border-radius:12px;
       background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .service-card:hover{ transform:translateY(-8px); box-shadow:0 12px 36px rgba(0,0,0,0.6) }
     .service-icon{
-      width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      width:80px; height:80px; border-radius:12px; display:flex; align-items:center; justify-content:center;
       background: rgba(255,255,255,0.02); padding:8px;
     }
-    .service-icon img{
-      width:100%;height:100%;object-fit:contain;
-      filter: grayscale(1) sepia(1) hue-rotate(200deg) saturate(6) brightness(0.95);
-    }
+    /* رنگ آیکون خدمات #2196F3 */
+    .service-icon img{ filter: invert(31%) sepia(84%) saturate(2332%) hue-rotate(191deg) brightness(95%) contrast(92%); }
     .service-title{ color:#f8fbff; font-weight:700; font-size:14px; text-align:center }
 
     /* ای‌نماد */
@@ -108,30 +91,27 @@
       position:fixed; left:0; right:0; bottom:0; height:94px;
       display:flex; justify-content:space-around; align-items:center;
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      backdrop-filter: blur(12px);
-      border-top:1px solid var(--border);
-      z-index:130;
+      backdrop-filter: blur(12px); border-top:1px solid var(--border); z-index:130;
     }
-    .footer-item{ display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--muted); font-size:12px; width:64px; }
+    .footer-item{
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      color:var(--muted); font-size:12px; width:64px; cursor:pointer;
+    }
     .footer-icon{
-      width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;
       background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.03); color:var(--accent1); font-size:22px;
-      transition: transform .18s ease, box-shadow .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease; user-select:none;
     }
     .footer-item:hover .footer-icon{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,212,255,0.08) }
-
     .footer-item.center{ transform: translateY(-26%); }
     .footer-item.center .footer-icon{
       width:76px;height:76px;border-radius:50%;
       background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      color:#021017; font-size:32px; box-shadow:0 16px 48px rgba(0,210,255,0.18);
-      border:none;
+      color:#021017; font-size:32px; box-shadow:0 16px 48px rgba(0,210,255,0.18); border:none;
     }
     .footer-item.center span{ color:#fff; font-weight:700 }
 
-    @media (max-width:720px){
-      .services-grid{ grid-template-columns: repeat(2,1fr) }
-    }
+    @media (max-width:720px){ .services-grid{ grid-template-columns: repeat(2,1fr) } }
     @media (max-width:420px){
       .services-grid{ grid-template-columns: repeat(1,1fr) }
       footer{ height:86px }
@@ -145,11 +125,9 @@
     <div class="header-right">
       <div class="menu-btn material-icons-round" title="منو">menu</div>
     </div>
-
     <div class="logo-wrap">
       <img src="https://cdn.imgurl.ir/uploads/k448808_file_00000000466c61f5ae40fc4bc2083f27.png" alt="گادتوشاپ" class="logo-img">
     </div>
-
     <div class="header-left">
       <div class="login-text">ورود</div>
     </div>
@@ -194,8 +172,14 @@
   </footer>
 
   <script>
+    // دکمه منو نمونه
     document.querySelector('.menu-btn').addEventListener('click', ()=> {
       alert('اینجا منو باز می‌شود (نمونه).');
+    });
+
+    // جلوگیری از باز شدن متن اضافه روی کلیک فوتر
+    document.querySelectorAll('.footer-item').forEach(item => {
+      item.addEventListener('click', e => { e.preventDefault(); });
     });
   </script>
 
