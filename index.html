@@ -43,7 +43,6 @@
     .login-text{ font-weight:600; color:var(--text); padding:8px 10px; border-radius:10px; background:transparent; cursor:pointer; }
     .logo-wrap{ display:flex; align-items:center; justify-content:center; position:absolute; left:50%; transform:translateX(-50%); }
 
-    /* لوگو */
     .logo-img { width:66px; height:66px; border-radius:14px; object-fit:contain; display:block; }
 
     main{ padding-top:110px; padding-bottom:220px; min-height:100vh; }
@@ -76,7 +75,6 @@
       width:80px; height:80px; border-radius:12px; display:flex; align-items:center; justify-content:center;
       background: rgba(255,255,255,0.02); padding:8px;
     }
-    /* برگردوندن رنگ آیکون‌ها به حالت قبل */
     .service-icon img{ filter: grayscale(1) sepia(1) hue-rotate(200deg) saturate(6) brightness(0.95); }
     .service-title{ color:#f8fbff; font-weight:700; font-size:14px; text-align:center }
 
@@ -114,10 +112,11 @@
     }
     .footer-item.center span{ color:#fff; font-weight:700 }
 
+    /* ---------- Responsive ---------- */
     @media (max-width:720px){ .services-grid{ grid-template-columns: repeat(2,1fr) } }
-    @media (max-width:420px){
+    @media (max-width:480px){
       .services-grid{ grid-template-columns: repeat(1,1fr) }
-      footer{ height:86px }
+      footer{ height:86px; padding-bottom:4px }
       .footer-item.center .footer-icon{ width:64px;height:64px }
     }
   </style>
@@ -177,11 +176,11 @@
   <script>
     document.querySelector('.menu-btn').addEventListener('click', ()=> { alert('اینجا منو باز می‌شود (نمونه).'); });
 
-    // جلوگیری از باز شدن متن اضافه و رنگ آبی روی کلیک فوتر و خدمات
+    // جلوگیری از باز شدن متن اضافه و highlight آبی روی کلیک فوتر و خدمات
     document.querySelectorAll('.footer-item, .service-card').forEach(item => {
-      item.addEventListener('click', e => { e.preventDefault(); });
-      item.addEventListener('mousedown', e => { e.preventDefault(); });
-      item.addEventListener('focus', e => { e.preventDefault(); });
+      item.addEventListener('click', e => e.preventDefault());
+      item.addEventListener('mousedown', e => e.preventDefault());
+      item.addEventListener('focus', e => e.preventDefault());
     });
   </script>
 
