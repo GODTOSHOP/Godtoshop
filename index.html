@@ -76,9 +76,12 @@
       width:80px; height:80px; border-radius:12px; display:flex; align-items:center; justify-content:center;
       background: rgba(255,255,255,0.02); padding:8px;
     }
-    /* رنگ آیکون خدمات #2196F3 */
-    .service-icon img{ filter: invert(31%) sepia(84%) saturate(2332%) hue-rotate(191deg) brightness(95%) contrast(92%); }
+    /* برگردوندن رنگ آیکون‌ها به حالت قبل */
+    .service-icon img{ filter: grayscale(1) sepia(1) hue-rotate(200deg) saturate(6) brightness(0.95); }
     .service-title{ color:#f8fbff; font-weight:700; font-size:14px; text-align:center }
+
+    /* جلوگیری از highlight روی کلیک */
+    .service-card, .footer-item, .footer-icon { outline: none; -webkit-tap-highlight-color: transparent; }
 
     /* ای‌نماد */
     .enamad-wrap{ margin-top:6px; display:flex; align-items:center; justify-content:center; width:100% }
@@ -172,14 +175,13 @@
   </footer>
 
   <script>
-    // دکمه منو نمونه
-    document.querySelector('.menu-btn').addEventListener('click', ()=> {
-      alert('اینجا منو باز می‌شود (نمونه).');
-    });
+    document.querySelector('.menu-btn').addEventListener('click', ()=> { alert('اینجا منو باز می‌شود (نمونه).'); });
 
-    // جلوگیری از باز شدن متن اضافه روی کلیک فوتر
-    document.querySelectorAll('.footer-item').forEach(item => {
+    // جلوگیری از باز شدن متن اضافه و رنگ آبی روی کلیک فوتر و خدمات
+    document.querySelectorAll('.footer-item, .service-card').forEach(item => {
       item.addEventListener('click', e => { e.preventDefault(); });
+      item.addEventListener('mousedown', e => { e.preventDefault(); });
+      item.addEventListener('focus', e => { e.preventDefault(); });
     });
   </script>
 
