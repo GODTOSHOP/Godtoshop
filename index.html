@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>گادتوشاپ — فروشگاه دیجیتال</title>
 
-  <!-- فونت فارسی Vazirmatn -->
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
-
-  <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
   <style>
@@ -29,7 +26,6 @@
     html,body{height:100%;margin:0;background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
 
-    /* ---------- Header ---------- */
     header{
       position:fixed;top:0;left:0;right:0;height:72px;
       display:flex;align-items:center;justify-content:space-between;padding:0 18px;
@@ -40,149 +36,138 @@
     }
     .header-left, .header-right { display:flex; align-items:center; gap:12px; }
     .menu-btn{ font-size:26px; color:var(--accent1); cursor:pointer; display:flex; align-items:center; justify-content:center; width:44px; height:44px; }
-    .login-text{ font-weight:600; color:var(--text); padding:8px 10px; border-radius:10px; background:transparent; cursor:pointer; }
-    .logo-wrap{ display:flex; align-items:center; justify-content:center; position:absolute; left:50%; transform:translateX(-50%); }
 
-    /* لوگو */
-    .logo-img {
-      width:66px;
-      height:66px;
-      border-radius:14px;
-      object-fit:contain;
-      display:block;
+    /* دکمه ورود شیشه‌ای */
+    .login-text {
+      font-weight:600;
+      color:var(--text);
+      padding:8px 14px;
+      border-radius:12px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,0.1);
+      cursor:pointer;
+      transition: background .2s, transform .2s;
+      user-select:none;
+      outline: none;
     }
+    .login-text:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-2px);
+    }
+    .login-text:focus, .login-text:active {
+      outline: none;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .logo-wrap{ display:flex; align-items:center; justify-content:center; position:absolute; left:50%; transform:translateX(-50%); }
+    .logo-img { width:66px; height:66px; border-radius:14px; object-fit:contain; display:block; }
 
     main{ padding-top:110px; padding-bottom:220px; min-height:100vh; }
     .container{ max-width:1100px; margin:0 auto; padding:18px; }
+    .spacer{ height:40px; }
 
-    /* ---------- Services ---------- */
-    .services-section{
-      width:100%;
-      padding:28px 18px 80px;
-      display:flex;
-      justify-content:center;
-    }
+    .services-section{ width:100%; padding:28px 18px 80px; display:flex; justify-content:center; }
     .services-inner{
-      max-width:1100px;
-      width:100%;
+      max-width:1100px; width:100%;
       background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
       border:1px solid var(--glass-strong);
-      border-radius:16px;
-      padding:18px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:18px;
+      border-radius:16px; padding:18px;
+      display:flex; flex-direction:column; align-items:center; gap:18px;
       backdrop-filter: blur(10px);
     }
     .services-grid{
-      width:100%;
-      display:grid;
-      grid-template-columns: repeat(3,1fr);
-      gap:18px;
+      width:100%; display:grid;
+      grid-template-columns: repeat(3,1fr); gap:18px;
     }
     .service-card{
-      display:flex;flex-direction:column;align-items:center;gap:10px;padding:12px;border-radius:12px;
+      display:flex; flex-direction:column;align-items:center; gap:10px;
+      padding:12px; border-radius:12px;
       background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
       transition: transform .18s ease, box-shadow .18s ease;
     }
     .service-card:hover{ transform:translateY(-8px); box-shadow:0 12px 36px rgba(0,0,0,0.6) }
     .service-icon{
-      width:80px;height:80px;border-radius:12px;display:flex;align-items:center;justify-content:center;
+      width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center;
       background: rgba(255,255,255,0.02); padding:8px;
     }
-    .service-icon img{
-      width:100%;height:100%;object-fit:contain;
-      filter: grayscale(1) sepia(1) hue-rotate(200deg) saturate(6) brightness(0.95);
-    }
+    .service-icon img{ width:100%; height:100%; object-fit:contain; }
     .service-title{ color:#f8fbff; font-weight:700; font-size:14px; text-align:center }
 
-    /* ای‌نماد */
-    .enamad-wrap{ margin-top:6px; display:flex; align-items:center; justify-content:center; width:100% }
+    .service-card, .footer-item, .footer-icon { outline: none; -webkit-tap-highlight-color: transparent; }
 
-    /* Legal text */
+    .enamad-wrap{ margin-top:6px; display:flex; align-items:center; justify-content:center; width:100% }
     .legal-text{ margin-top:8px; color:var(--muted); font-size:13px; text-align:center; line-height:1.6; padding:0 8px }
 
-    /* ---------- Footer ---------- */
     footer{
       position:fixed; left:0; right:0; bottom:0; height:94px;
       display:flex; justify-content:space-around; align-items:center;
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-      backdrop-filter: blur(12px);
-      border-top:1px solid var(--border);
-      z-index:130;
+      backdrop-filter: blur(12px); border-top:1px solid var(--border); z-index:130;
     }
-    .footer-item{ display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--muted); font-size:12px; width:64px; }
+    .footer-item{
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      color:var(--muted); font-size:12px; width:64px; cursor:pointer;
+    }
     .footer-icon{
-      width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+      width:48px; height:48px; border-radius:50%; display:flex; align-items:center; justify-content:center;
       background: rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.03); color:var(--accent1); font-size:22px;
-      transition: transform .18s ease, box-shadow .18s ease;
+      transition: transform .18s ease, box-shadow .18s ease; user-select:none;
     }
     .footer-item:hover .footer-icon{ transform:translateY(-6px); box-shadow:0 10px 30px rgba(0,212,255,0.08) }
-
     .footer-item.center{ transform: translateY(-26%); }
     .footer-item.center .footer-icon{
-      width:76px;height:76px;border-radius:50%;
+      width:64px; height:64px; border-radius:50%;
       background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      color:#021017; font-size:32px; box-shadow:0 16px 48px rgba(0,210,255,0.18);
-      border:none;
+      color:#021017; font-size:28px; box-shadow:0 12px 36px rgba(0,210,255,0.18); border:none;
     }
     .footer-item.center span{ color:#fff; font-weight:700 }
 
-    @media (max-width:720px){
-      .services-grid{ grid-template-columns: repeat(2,1fr) }
-    }
-    @media (max-width:420px){
+    @media (max-width:720px){ .services-grid{ grid-template-columns: repeat(2,1fr) } }
+    @media (max-width:480px){
       .services-grid{ grid-template-columns: repeat(1,1fr) }
-      footer{ height:86px }
-      .footer-item.center .footer-icon{ width:64px;height:64px }
+      footer{ height:86px; padding-bottom:4px }
+      .footer-item.center .footer-icon{ width:56px;height:56px }
+      .service-icon{ width:56px; height:56px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="header-right">
-      <div class="menu-btn material-icons-round" title="منو">menu</div>
-    </div>
-
-    <div class="logo-wrap">
-      <img src="https://cdn.imgurl.ir/uploads/k448808_file_00000000466c61f5ae40fc4bc2083f27.png" alt="گادتوشاپ" class="logo-img">
-    </div>
-
-    <div class="header-left">
-      <div class="login-text">ورود</div>
-    </div>
+    <div class="header-right"><div class="menu-btn material-icons-round" title="منو">menu</div></div>
+    <div class="logo-wrap"><img src="https://cdn.imgurl.ir/uploads/k448808_file_00000000466c61f5ae40fc4bc2083f27.png" alt="گادتوشاپ" class="logo-img"></div>
+    <div class="header-left"><div class="login-text">ورود</div></div>
   </header>
 
   <main>
     <div class="container">
       <div class="spacer"></div>
+
+      <section class="services-section">
+        <div class="services-inner">
+          <div class="services-grid">
+            <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/a14022_icon1-150x150_1.png"></div><div class="service-title">شارژ فوری</div></div>
+            <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/k410752_icon2-150x150_1.png"></div><div class="service-title">شارژ ۲۴ ساعته</div></div>
+            <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/c261846_icon3-150x150_1.png"></div><div class="service-title">پرداخت ایمن</div></div>
+            <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/l98463_icon4-150x150_1.png"></div><div class="service-title">پنل کاربری</div></div>
+            <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/p979093_icon5-150x150_1.png"></div><div class="service-title">ضمانت قیمت</div></div>
+            <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/p5068_icon6-150x150_1.png"></div><div class="service-title">قدمت از ۱۴۰۳/۵/۲۳</div></div>
+          </div>
+
+          <div class="enamad-wrap">
+            <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
+              <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="نماد اعتماد گادتوشاپ" style="cursor:pointer">
+            </a>
+          </div>
+
+          <div class="legal-text">
+            تمامی کالاها و خدمات این فروشگاه، حسب مورد دارای مجوزهای لازم از مراجع مربوطه می‌باشند و فعالیت‌های این سایت تابع قوانین و مقررات جمهوری اسلامی ایران است.<br>
+            کلیه حقوق این سایت متعلق به گادتوشاپ می‌باشد.
+          </div>
+        </div>
+      </section>
     </div>
-
-    <section class="services-section">
-      <div class="services-inner">
-        <div class="services-grid">
-          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/a14022_icon1-150x150_1.png"></div><div class="service-title">شارژ فوری</div></div>
-          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/k410752_icon2-150x150_1.png"></div><div class="service-title">شارژ ۲۴ ساعته</div></div>
-          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/c261846_icon3-150x150_1.png"></div><div class="service-title">پرداخت ایمن</div></div>
-          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/l98463_icon4-150x150_1.png"></div><div class="service-title">پنل کاربری</div></div>
-          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/p979093_icon5-150x150_1.png"></div><div class="service-title">ضمانت قیمت</div></div>
-          <div class="service-card"><div class="service-icon"><img src="https://cdn.imgurl.ir/uploads/p5068_icon6-150x150_1.png"></div><div class="service-title">قدمت از ۱۴۰۳/۵/۲۳</div></div>
-        </div>
-
-        <div class="enamad-wrap">
-          <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
-            <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="نماد اعتماد گادتوشاپ" style="cursor:pointer">
-          </a>
-        </div>
-
-        <div class="legal-text">
-          تمامی کالاها و خدمات این فروشگاه، حسب مورد دارای مجوزهای لازم از مراجع مربوطه می‌باشند و فعالیت‌های این سایت تابع قوانین و مقررات جمهوری اسلامی ایران است.<br>
-          کلیه حقوق این سایت متعلق به گادتوشاپ می‌باشد.
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer>
@@ -194,6 +179,12 @@
   </footer>
 
   <script>
+    // جلوگیری از هایلایت آبی روی کلیک آیکون‌ها
+    document.querySelectorAll('.footer-item, .service-card, .login-text').forEach(el=>{
+      el.addEventListener('mousedown', e=>e.preventDefault());
+    });
+
+    // دکمه منو نمونه
     document.querySelector('.menu-btn').addEventListener('click', ()=> {
       alert('اینجا منو باز می‌شود (نمونه).');
     });
