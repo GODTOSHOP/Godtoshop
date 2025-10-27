@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>گادتوشاپ — فروشگاه دیجیتال</title>
 
-  <!-- فونت فارسی Vazirmatn -->
   <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
-
-  <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
   <style>
@@ -40,21 +37,26 @@
     }
     .header-left, .header-right { display:flex; align-items:center; gap:12px; }
     .menu-btn{ font-size:26px; color:var(--accent1); cursor:pointer; display:flex; align-items:center; justify-content:center; width:44px; height:44px; }
-    .login-text{ 
-      font-weight:600; 
-      color:var(--text); 
-      padding:8px 10px; 
-      border-radius:10px; 
-      background:transparent; 
-      cursor:pointer; 
+
+    /* آیکون ورود */
+    .login-icon{
+      font-size:26px;
+      color:var(--accent1);
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:44px;
+      height:44px;
+      border-radius:10px;
       transition: all .2s ease;
-      user-select: none;
+      background:transparent !important;
     }
-    .login-text:focus,
-    .login-text:active{
-      outline:none;
-      background:transparent !important; /* حذف افکت آبی */
+    .login-icon:focus,
+    .login-icon:active{
+      background:transparent !important;
       box-shadow:none !important;
+      outline:none !important;
     }
 
     .logo-wrap{ display:flex; align-items:center; justify-content:center; position:absolute; left:50%; transform:translateX(-50%); }
@@ -63,10 +65,7 @@
     main{ padding-top:110px; padding-bottom:220px; min-height:100vh; }
     .container{ max-width:1100px; margin:0 auto; padding:18px; }
 
-    .hero {
-      display:flex; justify-content:center; align-items:flex-start; gap:20px; margin-top:6px;
-    }
-
+    .hero { display:flex; justify-content:center; align-items:flex-start; gap:20px; margin-top:6px; }
     .glass-panel {
       width:100%; max-width:720px;
       margin: 0 auto;
@@ -80,7 +79,6 @@
       position: sticky;
       top: 90px;
     }
-
     .glass-panel h1{ margin:0 0 8px 0; font-size:22px; letter-spacing:0.2px }
     .glass-panel p{ margin:0 0 14px 0; color:var(--muted); line-height:1.6 }
 
@@ -97,7 +95,6 @@
 
     .spacer{ height:900px; opacity:0.03 }
 
-    /* ---------- Enamad Section ---------- */
     .services-section{
       width:100%;
       padding:28px 18px 80px;
@@ -117,10 +114,10 @@
       gap:18px;
       backdrop-filter: blur(10px);
     }
+
     .enamad-wrap{ margin-top:6px; display:flex; align-items:center; justify-content:center; width:100% }
     .legal-text{ margin-top:8px; color:var(--muted); font-size:13px; text-align:center; line-height:1.6; padding:0 8px }
 
-    /* ---------- Footer ---------- */
     footer{
       position:fixed; left:0; right:0; bottom:0; height:94px;
       display:flex; justify-content:space-around; align-items:center;
@@ -193,7 +190,7 @@
     </div>
 
     <div class="header-left">
-      <div class="login-text" tabindex="0">ورود</div>
+      <div class="login-icon material-icons-round" title="ورود">person</div>
     </div>
   </header>
 
@@ -202,15 +199,13 @@
       <section class="hero">
         <div class="glass-panel">
           <h1>گادتوشاپ — فروشگاه دیجیتال</h1>
-          <p>همین حالا آماده شو، به‌زودی فروشگاه کامل راه‌اندازی می‌شود. این فضای شیشه‌ای هنگام اسکرول همراهت می‌ماند.</p>
-
+          <p>به‌زودی فروشگاه کامل راه‌اندازی می‌شود.</p>
           <div class="search-row">
             <input type="search" placeholder="جستجوی محصول، بازی یا گیفت‌کارت...">
             <button class="btn">جستجو</button>
           </div>
         </div>
       </section>
-
       <div class="spacer"></div>
     </div>
 
@@ -218,42 +213,35 @@
       <div class="services-inner">
         <div class="enamad-wrap">
           <a referrerpolicy="origin" target="_blank" href="https://trustseal.enamad.ir/?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
-            <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="enamad" style="cursor:pointer" code="pr5XzFRgAGAokpiauq874kZxcQWAxCWT">
+            <img referrerpolicy="origin" src="https://trustseal.enamad.ir/logo.aspx?id=643657&Code=pr5XzFRgAGAokpiauq874kZxcQWAxCWT" alt="" style="cursor:pointer">
           </a>
         </div>
-
         <div class="legal-text">
-          تمامی کالا ها و خدمات این فروشگاه، حسب مورد دارای مجوز های لازم از مراجع مربوطه می باشند و فعالیت های این سایت تابع قوانین و مقررات جمهوری اسلامی ایران است.<br>
           کلیه حقوق این سایت متعلق به گادتوشاپ می‌باشد.
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
     <div class="footer-item">
-      <div class="footer-icon material-icons-round" aria-hidden="true">home</div>
+      <div class="footer-icon material-icons-round">home</div>
       <div>خانه</div>
     </div>
-
     <div class="footer-item">
-      <div class="footer-icon material-icons-round" aria-hidden="true">person</div>
+      <div class="footer-icon material-icons-round">person</div>
       <div>ورود</div>
     </div>
-
-    <div class="footer-item center" role="button" aria-label="سبد خرید">
-      <div class="footer-icon material-icons-round" aria-hidden="true">shopping_bag</div>
+    <div class="footer-item center">
+      <div class="footer-icon material-icons-round">shopping_bag</div>
       <span>سبد</span>
     </div>
-
     <div class="footer-item">
-      <div class="footer-icon material-icons-round" aria-hidden="true">apps</div>
+      <div class="footer-icon material-icons-round">apps</div>
       <div>اپ</div>
     </div>
-
     <div class="footer-item">
-      <div class="footer-icon material-icons-round" aria-hidden="true">support_agent</div>
+      <div class="footer-icon material-icons-round">support_agent</div>
       <div>پشتیبانی</div>
     </div>
   </footer>
@@ -263,7 +251,7 @@
     <div class="menu-content">
       <div class="menu-close material-icons-round">close</div>
       <h2>منوی گادتوشاپ</h2>
-      <p>به‌زودی بخش‌های مختلف اینجا فعال می‌شوند.</p>
+      <p>به‌زودی بخش‌های مختلف فعال می‌شوند.</p>
       <button class="btn" onclick="document.getElementById('menu').style.display='none'">بستن</button>
     </div>
   </div>
@@ -283,6 +271,5 @@
       if(e.target === menu) menu.style.display = 'none';
     });
   </script>
-
 </body>
 </html>
