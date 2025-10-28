@@ -5,11 +5,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>گادتوشاپ</title>
 
-  <!-- فونت فارسی -->
-  <link href="https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
   <style>
+    /* استفاده از فونت کاربر */
+    @font-face {
+      font-family: 'GadetoFont';
+      src: url('fon(1).ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     :root {
       --bg: #121212;
       --glass: rgba(255,255,255,0.03);
@@ -18,20 +24,22 @@
       --accent1: #00d4ff;
       --accent2: #00ffa3;
       --blur: 14px;
-      --font: 'Vazirmatn', sans-serif;
+      --font: 'GadetoFont', 'Vazirmatn', sans-serif;
     }
 
     * {
       box-sizing: border-box;
       -webkit-tap-highlight-color: transparent;
+      font-family: var(--font);
     }
+
     html, body {
       height: 100%;
       margin: 0;
       background: var(--bg);
-      font-family: var(--font);
       color: white;
     }
+
     a { text-decoration: none; color: inherit; }
 
     /* Header */
@@ -48,11 +56,13 @@
       border-bottom: 1px solid var(--border);
       z-index: 100;
     }
+
     .header-left, .header-right {
       display: flex;
       align-items: center;
       gap: 12px;
     }
+
     .menu-btn {
       font-size: 26px;
       color: var(--accent1);
@@ -70,6 +80,7 @@
       transform: scale(0.95);
       background: var(--glass-strong);
     }
+
     .login-text {
       font-weight: 600;
       color: white;
@@ -80,21 +91,83 @@
       cursor: pointer;
       transition: background .2s ease, transform .2s ease;
     }
+
     .login-text:hover {
       background: var(--glass-strong);
       transform: translateY(-2px);
     }
+
     .logo-wrap {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
     }
+
     .logo-img {
       width: 66px;
       height: 66px;
       border-radius: 14px;
       object-fit: contain;
       display: block;
+    }
+
+    /* Side Menu */
+    .side-menu {
+      position: fixed;
+      top: 0; right: -100%;
+      width: 80%;
+      max-width: 360px;
+      height: 100%;
+      background: rgba(18,18,18,0.95);
+      backdrop-filter: blur(16px);
+      border-left: 1px solid var(--border);
+      box-shadow: -6px 0 20px rgba(0,0,0,0.4);
+      transition: right 0.4s cubic-bezier(.25,.1,.25,1);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+    }
+    .side-menu.active { right: 0; }
+
+    .menu-header {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      height: 60px;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 10px 0;
+      cursor: pointer;
+      font-weight: 600;
+      transition: color .2s ease;
+    }
+
+    .tab.active {
+      color: var(--accent1);
+      border-bottom: 2px solid var(--accent1);
+    }
+
+    .menu-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+
+    .menu-item {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      transition: background .2s;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      background: var(--glass-strong);
     }
 
     /* Footer */
@@ -110,6 +183,7 @@
       border-top: 1px solid var(--border);
       z-index: 130;
     }
+
     .footer-item {
       display: flex;
       flex-direction: column;
@@ -119,6 +193,7 @@
       color: rgba(255,255,255,0.7);
       width: 64px;
     }
+
     .footer-icon {
       width: 48px;
       height: 48px;
@@ -132,9 +207,11 @@
       font-size: 22px;
       transition: transform .18s ease, box-shadow .18s ease;
     }
+
     .footer-item.center {
       transform: translateY(-26%);
     }
+
     .footer-item.center .footer-icon {
       width: 76px;
       height: 76px;
@@ -145,6 +222,7 @@
       box-shadow: 0 16px 48px rgba(0,210,255,0.18);
       border: none;
     }
+
     @media (max-width:420px) {
       footer { height: 86px; }
       .footer-item.center .footer-icon { width: 64px; height: 64px; }
@@ -158,73 +236,6 @@
       color: rgba(255,255,255,0.2);
       font-size: 16px;
       user-select: none;
-    }
-
-    /* ---------- منوی کشویی ---------- */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 82%;
-      max-width: 400px;
-      height: 100%;
-      background: rgba(18,18,18,0.95);
-      backdrop-filter: blur(16px);
-      border-left: 1px solid var(--border);
-      transition: right .35s ease;
-      z-index: 200;
-      display: flex;
-      flex-direction: column;
-    }
-    .side-menu.open { right: 0; }
-
-    .menu-tabs {
-      display: flex;
-      justify-content: space-around;
-      border-bottom: 1px solid var(--border);
-    }
-    .menu-tab {
-      flex: 1;
-      text-align: center;
-      padding: 14px 0;
-      cursor: pointer;
-      transition: background .2s ease;
-    }
-    .menu-tab.active {
-      background: var(--glass-strong);
-      color: var(--accent1);
-      font-weight: bold;
-    }
-
-    .menu-content {
-      padding: 18px;
-      overflow-y: auto;
-      flex: 1;
-    }
-    .menu-item {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      color: white;
-      font-size: 15px;
-      cursor: pointer;
-    }
-    .menu-item:hover {
-      color: var(--accent2);
-    }
-
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.3);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity .3s ease;
-      z-index: 190;
-    }
-    .overlay.show {
-      opacity: 1;
-      visibility: visible;
     }
   </style>
 </head>
@@ -271,76 +282,60 @@
     </div>
   </footer>
 
-  <!-- منوی کناری -->
-  <div class="overlay"></div>
-  <div class="side-menu">
-    <div class="menu-tabs">
-      <div class="menu-tab active" data-tab="products">محصولات</div>
-      <div class="menu-tab" data-tab="contact">ارتباط با ما</div>
+  <div class="side-menu" id="sideMenu">
+    <div class="menu-header">
+      <div class="tab active" id="tab-products">محصولات</div>
+      <div class="tab" id="tab-contact">ارتباط با ما</div>
     </div>
 
-    <div class="menu-content" id="menu-content">
-      <!-- بخش محصولات به صورت پیش‌فرض -->
-      <div class="menu-item">ورود و ثبت نام</div>
-      <div class="menu-item">گادتوشاپ</div>
-      <div class="menu-item">اکانت پرمیوم ماینکرفت فول اکسس</div>
-      <div class="menu-item">جم فری فایر با ایدی</div>
-      <div class="menu-item">جم فری فایر با اطلاعات</div>
-      <div class="menu-item">خرید مستر کارت</div>
-      <div class="menu-item">شارژ مستر کارت</div>
-      <div class="menu-item">واسطه گر های حرفه ای گادتوشاپ</div>
-      <div class="menu-item">ساخت تامنیل حرفه ای با سبک دلخواه شما</div>
-    </div>
+    <div class="menu-content" id="menuContent"></div>
   </div>
 
   <script>
     const menuBtn = document.querySelector('.menu-btn');
-    const sideMenu = document.querySelector('.side-menu');
-    const overlay = document.querySelector('.overlay');
-    const tabs = document.querySelectorAll('.menu-tab');
-    const content = document.getElementById('menu-content');
+    const sideMenu = document.getElementById('sideMenu');
+    const tabProducts = document.getElementById('tab-products');
+    const tabContact = document.getElementById('tab-contact');
+    const menuContent = document.getElementById('menuContent');
 
-    const tabData = {
-      products: [
-        'ورود و ثبت نام',
-        'گادتوشاپ',
-        'اکانت پرمیوم ماینکرفت فول اکسس',
-        'جم فری فایر با ایدی',
-        'جم فری فایر با اطلاعات',
-        'خرید مستر کارت',
-        'شارژ مستر کارت',
-        'واسطه گر های حرفه ای گادتوشاپ',
-        'ساخت تامنیل حرفه ای با سبک دلخواه شما'
-      ],
-      contact: [
-        'ورود و ثبت نام',
-        'گادتوشاپ',
-        'تماس با ما',
-        'اعتماد سازی',
-        'درباره ی ما',
-        'قوانین و مقررات',
-        'کانال های ما'
-      ]
-    };
+    const productsHTML = `
+      <div class="menu-item">ورود و ثبت نام</div>
+      <div class="menu-item">گادتوشاپ</div>
+      <div class="menu-item">اکانت پرمیوم ماینکرفت فول اکسس</div>
+      <div class="menu-item">جم فری فایر با آیدی</div>
+      <div class="menu-item">جم فری فایر با اطلاعات</div>
+      <div class="menu-item">خرید مستر کارت</div>
+      <div class="menu-item">شارژ مستر کارت</div>
+      <div class="menu-item">واسطه‌گرهای حرفه‌ای گادتوشاپ</div>
+      <div class="menu-item">ساخت تامنیل حرفه‌ای با سبک دلخواه شما</div>
+    `;
 
-    // باز و بسته کردن منو
+    const contactHTML = `
+      <div class="menu-item">ورود و ثبت نام</div>
+      <div class="menu-item">گادتوشاپ</div>
+      <div class="menu-item">تماس با ما</div>
+      <div class="menu-item">اعتمادسازی</div>
+      <div class="menu-item">درباره ما</div>
+      <div class="menu-item">قوانین و مقررات</div>
+      <div class="menu-item">کانال‌های ما</div>
+    `;
+
+    menuContent.innerHTML = productsHTML;
+
     menuBtn.addEventListener('click', () => {
-      sideMenu.classList.add('open');
-      overlay.classList.add('show');
-    });
-    overlay.addEventListener('click', () => {
-      sideMenu.classList.remove('open');
-      overlay.classList.remove('show');
+      sideMenu.classList.toggle('active');
     });
 
-    // تغییر تب‌ها
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const items = tabData[tab.dataset.tab];
-        content.innerHTML = items.map(i => `<div class="menu-item">${i}</div>`).join('');
-      });
+    tabProducts.addEventListener('click', () => {
+      tabProducts.classList.add('active');
+      tabContact.classList.remove('active');
+      menuContent.innerHTML = productsHTML;
+    });
+
+    tabContact.addEventListener('click', () => {
+      tabContact.classList.add('active');
+      tabProducts.classList.remove('active');
+      menuContent.innerHTML = contactHTML;
     });
   </script>
 
