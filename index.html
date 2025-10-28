@@ -81,7 +81,7 @@
     .menu-item { padding: 14px; border-bottom: 1px solid var(--border); color: rgba(255,255,255,0.8); font-size: 15px; transition: background .2s; cursor: pointer; }
     .menu-item:hover { background: var(--glass-strong); }
 
-    /* Overlay برای تار شدن پشت منو */
+    /* Overlay */
     .overlay {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background: rgba(0,0,0,0.4); backdrop-filter: blur(4px);
@@ -109,6 +109,35 @@
     }
 
     main { height: 100vh; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 16px; user-select: none; }
+
+    /* Telegram Circle */
+    #telegramCircle {
+      position: fixed;
+      bottom: 120px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #0088cc;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      cursor: pointer;
+      z-index: 2000;
+
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    #telegramCircle.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #telegramCircle img {
+      width: 30px;
+      height: 30px;
+    }
   </style>
 </head>
 <body>
@@ -117,11 +146,9 @@
     <div class="header-right">
       <div class="menu-btn material-icons-round" title="منو">menu</div>
     </div>
-
     <div class="logo-wrap">
       <img src="https://cdn.imgurl.ir/uploads/v23408_file_00000000466c61f5ae40fc4bc2083f27.png" alt="گادتوشاپ" class="logo-img">
     </div>
-
     <div class="header-left">
       <div class="login-text">ورود</div>
     </div>
@@ -157,12 +184,18 @@
   <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
 
+  <!-- Side Menu -->
   <div class="side-menu" id="sideMenu">
     <div class="menu-header">
       <div class="tab active" id="tab-products">محصولات</div>
       <div class="tab" id="tab-contact">ارتباط با ما</div>
     </div>
     <div class="menu-content" id="menuContent"></div>
+  </div>
+
+  <!-- Telegram Circle -->
+  <div id="telegramCircle">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
   </div>
 
   <script>
@@ -216,6 +249,28 @@
       tabContact.classList.add('active');
       tabProducts.classList.remove('active');
       menuContent.innerHTML = contactHTML;
+    });
+
+    // Telegram Circle Logic
+    const supportItem = Array.from(document.querySelectorAll('.menu-item'))
+                          .find(el => el.textContent.includes('پشتیبانی'));
+    const telegramCircle = document.getElementById('telegramCircle');
+
+    supportItem.addEventListener('click', () => {
+      telegramCircle.classList.toggle('show'); // toggle show/hide
+    });
+
+    telegramCircle.addEventListener('click', () => {
+      window.open('https://t.me/Technodiamond931', '_blank');
+    });
+
+    // بستن دایره با کلیک بیرون
+    document.addEventListener('click', (e) => {
+      if(telegramCircle.classList.contains('show') && 
+         !telegramCircle.contains(e.target) &&
+         !supportItem.contains(e.target)) {
+        telegramCircle.classList.remove('show');
+      }
     });
   </script>
 
