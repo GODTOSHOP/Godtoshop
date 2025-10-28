@@ -159,6 +159,73 @@
       font-size: 16px;
       user-select: none;
     }
+
+    /* ---------- منوی کشویی ---------- */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 82%;
+      max-width: 400px;
+      height: 100%;
+      background: rgba(18,18,18,0.95);
+      backdrop-filter: blur(16px);
+      border-left: 1px solid var(--border);
+      transition: right .35s ease;
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+    }
+    .side-menu.open { right: 0; }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: space-around;
+      border-bottom: 1px solid var(--border);
+    }
+    .menu-tab {
+      flex: 1;
+      text-align: center;
+      padding: 14px 0;
+      cursor: pointer;
+      transition: background .2s ease;
+    }
+    .menu-tab.active {
+      background: var(--glass-strong);
+      color: var(--accent1);
+      font-weight: bold;
+    }
+
+    .menu-content {
+      padding: 18px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .menu-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    .menu-item:hover {
+      color: var(--accent2);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .3s ease;
+      z-index: 190;
+    }
+    .overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
   </style>
 </head>
 <body>
@@ -204,19 +271,77 @@
     </div>
   </footer>
 
+  <!-- منوی کناری -->
+  <div class="overlay"></div>
+  <div class="side-menu">
+    <div class="menu-tabs">
+      <div class="menu-tab active" data-tab="products">محصولات</div>
+      <div class="menu-tab" data-tab="contact">ارتباط با ما</div>
+    </div>
+
+    <div class="menu-content" id="menu-content">
+      <!-- بخش محصولات به صورت پیش‌فرض -->
+      <div class="menu-item">ورود و ثبت نام</div>
+      <div class="menu-item">گادتوشاپ</div>
+      <div class="menu-item">اکانت پرمیوم ماینکرفت فول اکسس</div>
+      <div class="menu-item">جم فری فایر با ایدی</div>
+      <div class="menu-item">جم فری فایر با اطلاعات</div>
+      <div class="menu-item">خرید مستر کارت</div>
+      <div class="menu-item">شارژ مستر کارت</div>
+      <div class="menu-item">واسطه گر های حرفه ای گادتوشاپ</div>
+      <div class="menu-item">ساخت تامنیل حرفه ای با سبک دلخواه شما</div>
+    </div>
+  </div>
+
   <script>
-    // جلوگیری از باز شدن هرگونه صفحه یا پاپ‌آپ در کروم
-    document.querySelectorAll('a, button, .footer-item, .footer-icon, .login-text, .menu-btn').forEach(el => {
-      el.addEventListener('click', e => {
-        e.preventDefault();
-        e.stopPropagation();
+    const menuBtn = document.querySelector('.menu-btn');
+    const sideMenu = document.querySelector('.side-menu');
+    const overlay = document.querySelector('.overlay');
+    const tabs = document.querySelectorAll('.menu-tab');
+    const content = document.getElementById('menu-content');
+
+    const tabData = {
+      products: [
+        'ورود و ثبت نام',
+        'گادتوشاپ',
+        'اکانت پرمیوم ماینکرفت فول اکسس',
+        'جم فری فایر با ایدی',
+        'جم فری فایر با اطلاعات',
+        'خرید مستر کارت',
+        'شارژ مستر کارت',
+        'واسطه گر های حرفه ای گادتوشاپ',
+        'ساخت تامنیل حرفه ای با سبک دلخواه شما'
+      ],
+      contact: [
+        'ورود و ثبت نام',
+        'گادتوشاپ',
+        'تماس با ما',
+        'اعتماد سازی',
+        'درباره ی ما',
+        'قوانین و مقررات',
+        'کانال های ما'
+      ]
+    };
+
+    // باز و بسته کردن منو
+    menuBtn.addEventListener('click', () => {
+      sideMenu.classList.add('open');
+      overlay.classList.add('show');
+    });
+    overlay.addEventListener('click', () => {
+      sideMenu.classList.remove('open');
+      overlay.classList.remove('show');
+    });
+
+    // تغییر تب‌ها
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const items = tabData[tab.dataset.tab];
+        content.innerHTML = items.map(i => `<div class="menu-item">${i}</div>`).join('');
       });
     });
-    document.addEventListener('touchstart', e => {
-      if (e.target.tagName === 'A' || e.target.closest('.footer-item') || e.target.closest('.footer-icon')) {
-        e.preventDefault();
-      }
-    }, { passive: false });
   </script>
 
 </body>
